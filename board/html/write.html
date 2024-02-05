@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+
+    <link rel="stylesheet" type="text/css" href="/board/css/writing.css">
+
+    <script src="/board/js/board.js" defer></script>
+
+</head>
+<body>
+    
+
+    <section class="writing">
+
+        <div class="page-title">
+            <div class="write-header">
+                <h3>글쓰기</h3>
+            </div>
+        </div>
+
+        <form id="f">
+
+            <div class="title-window">
+                <div class="input-title">
+                    <label for="title" class="blind">제목: </label>
+                    <input id="title" type="title" name="" placeholder="제목" value="">
+                </div>
+            </div>
+
+            <div class="input-content">
+
+                <label for="cont-title" class="blind"><h3>내용: </h3></label>
+
+                <textarea id="content" class="form-control" rows="30" cols="125" id="content" name="content" placeholder="내용 작성">
+
+                </textarea>
+                
+
+                <br><br>
+
+            </div>
+
+            <div class="button-array">
+                <input id = "button-in" type="button" value="작성" onclick="a()">
+
+                <div class="space"></div>
+
+                <input id = "button-in" type="button" value="취소" onclick="a()">
+            </div>
+
+
+
+
+        </form>
+
+      
+      </section>
+
+</body>
+</html>
