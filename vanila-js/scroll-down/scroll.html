@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS / Javascript Auto Scroll Example</title>
+    <style>
+		/* 상단 태그 */
+        .container {
+            height : 400vh;
+            background-color: lightgreen;
+        }
+		/* 하단 태그 */
+        .container2 {
+            height: 100vh;
+            background-color: lightpink;
+        }
+    
+        /* 위쪽 화살표 */
+
+        .arrow-up {
+            position : fixed;
+            bottom : 30px;
+            right : 30px;
+            background-color : tomato;
+            width :50px;
+            height : 50px;
+            border-radius: 50%;
+            opacity: 0;
+            transition : opacity 300ms ease;
+            pointer-events: none;
+            cursor: pointer;
+        }
+
+        .arrow-up.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* 아래쪽 화살표 */
+
+        .arrow-down {
+            position : fixed;
+            top : 30px;
+            right : 30px;
+            background-color : lightseagreen;
+            width :50px;
+            height : 50px;
+            border-radius: 50%;
+            opacity: 0;
+            transition : opacity 300ms ease;
+            pointer-events: none;
+            cursor: pointer;
+        }
+
+        .arrow-down.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <button class="arrow-down visible"></button>
+    <div class="container"></div>
+    <button class="arrow-up"></button>
+    <div class="container2"></div>
+    <script defer>
+        document.addEventListener('scroll',e=>{
+            if(window.scrollY > 500){	//스크롤 위치 500 높을시
+                //상단 이동 버튼 생성(토마토색)
+                document.querySelector('.arrow-up').classList.add('visible');
+                //하단 이동 버튼 삭제(초록색)
+                document.querySelector('.arrow-down').classList.remove('visible');
+
+            }
+            else {	//스크롤 위치 500 아래일시
+                //상단 이동 버튼 삭제(토마토색)
+                document.querySelector('.arrow-up').classList.remove('visible');
+                //하단 이동 버튼 생성(초록색)
+                document.querySelector('.arrow-down').classList.add('visible');
+			}
+        })
+        //오렌지색 버튼 클릭시, 최상단 태그로 이동
+        document.querySelector('.arrow-up').addEventListener('click',e=>{
+            document.querySelector('.container').scrollIntoView({behavior:'smooth'});
+        });
+        //초록색 버튼 클릭시, 최하단 태그로 이동
+        document.querySelector('.arrow-down').addEventListener('click',e=>{
+            document.querySelector('.container2').scrollIntoView({behavior : 'smooth'});
+        });
+    </script>
+</body>
+</html>
