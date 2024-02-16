@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrap">
+        <div class="imgHoverEvent event1">
+            <div class="imgBox"><img src="https://cdn.pixabay.com/photo/2022/07/10/19/28/mountains-7313638_960_720.jpg" alt=""> </div>
+            <div class="hoverBox">
+                <p class="p1">title</p>
+                <p class="p2">내용내용내용내용</p>
+            </div>
+        </div>
+
+        <div class="imgHoverEvent event2">
+            <div class="imgBox"><img src="https://cdn.pixabay.com/photo/2022/07/10/19/28/mountains-7313638_960_720.jpg" alt=""> </div>
+            <div class="hoverBox">
+                <span>
+                    <p class="p1">title</p>
+                    <p class="p2">흑백+블러</p>
+                </span>
+            </div>
+            </div> 
+
+        <div class="imgHoverEvent event3">
+            <div class="imgBox"><img src="https://cdn.pixabay.com/photo/2022/07/10/19/28/mountains-7313638_960_720.jpg" alt=""> </div>
+            <div class="hoverBox">
+            </div>
+        </div> 
+
+        <div class="imgHoverEvent event4">
+            <div class="imgBox"><img src="https://cdn.pixabay.com/photo/2022/07/10/19/28/mountains-7313638_960_720.jpg" alt=""> </div>
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+            <span class="line4"></span>
+            <div class="hoverBox">
+                    <p class="p1">title</p>
+                    <p class="p2">내용내용내용내용</p>
+            </div>
+        </div> 
+
+        <div class="imgHoverEvent event5">
+                <div class="imgBox"><img src="https://cdn.pixabay.com/photo/2022/07/10/19/28/mountains-7313638_960_720.jpg" alt=""> </div>
+                <div class="hoverBox">
+                    <span>
+                        <p class="p1">title</p>
+                        <p class="p2">내용내용내용내용</p>
+                    </span>
+                </div>
+        </div> 
+
+        <div class="imgHoverEvent event6">
+                <div class="imgBox"><img src="https://cdn.pixabay.com/photo/2022/07/10/19/28/mountains-7313638_960_720.jpg" alt=""> </div>
+                <div class="hoverBox">
+                    <span>
+                        <p class="p1">title</p>
+                        <p class="p2">내용내용내용내용</p>
+                    </span>
+            </div>
+        </div> 
+
+        <div class="imgHoverEvent event7">
+                <div class="imgBox"><img src="https://cdn.pixabay.com/photo/2022/07/10/19/28/mountains-7313638_960_720.jpg" alt=""> </div>
+                <div class="hoverBox">
+                    <span>
+                        <p class="p1">title</p>
+                        <p class="p2">내용내용내용내용</p>
+                    </span>
+            </div>
+        </div>
+
+        <div class="imgHoverEvent event8">
+            <div class="imgBox"><img src="https://cdn.pixabay.com/photo/2022/07/10/19/28/mountains-7313638_960_720.jpg" alt=""> </div>
+                <div class="hoverBox">
+                    <span class="span1">
+                        <p class="p1">title</p>
+                    </span><span class="span2">
+                        <p class="p2">내용내용내용내용</p>
+                    </span>
+            </div>
+        </div> 
+    </div>
+</body>
+</html>
+
+<style>
+    img{min-height: 100%; max-width: 100%; }
+    
+    .imgHoverEvent{width: 200px; height: 200px; margin: 30px; position: relative; overflow: hidden; display: inline-block;}
+    .imgHoverEvent .imgBox{width: 200px; height: 200px; text-align: center; background:url(http://gahyun.wooga.kr/portfolio/triple/resources/img/city00.jpg) no-repeat 50% 50%; background-size: auto 100%;}
+    .imgHoverEvent .hoverBox{position: absolute; top:0; left: 0; width: 200px; height: 200px;}
+    .hoverBox p.p1{text-align:center; font-size:18px;}
+    .hoverBox p.p2{margin-top: 40px;}
+
+    .event1 .hoverBox{background: linear-gradient(to bottom, rgba(0,0,0,0) 5%,rgba(255,255,255,1) 90%); transform: translateY(60%); transition: 0.5s;}
+    .event1:hover .hoverBox{transform: translateY(0);}
+
+    .event2 .imgBox{filter: blur(3px) grayscale(100%); transition: 0.5s;}
+    .event2 .hoverBox span{display: block; position: absolute; width:100%; top: 50%; transform: translateY(-50%)}
+    .event2 .hoverBox span p.p2{text-align: center;}
+    .event2:hover .hoverBox{display: none;}
+    .event2:hover .imgBox{filter: blur(0) grayscale(0);}
+    .event3 .hoverBox{background: linear-gradient(to right, rgba(0,0,0,0) ,rgba(255,255,255,1)); width: 50px; height:400px; transform: rotateZ(30deg);top: -100px; left:-130px; transition: 0.4s; opacity: 0.5;}
+    .event3:hover .hoverBox{left: 300px; opacity: 1;}
+    .event4 .line1, .event4 .line2, .event4 .line3, .event4 .line4{position:absolute; width: 0; top:0; left: 50%; height: 50px; background: rgba(0,0,0,0.5);}
+    .event4 .hoverBox{opacity: 0;}
+    .event4:hover .hoverBox{animation: event4Hover 0.5s linear 1; opacity: 1;}
+    .event4:hover .line1{animation: event41 0.5s steps(6) 1; left:0; width: 100%;}
+    .event4:hover .line2{animation: event42 0.5s steps(6) 1; left:0; width: 100%; top: 50px;}
+    .event4:hover .line3{animation: event43 0.5s steps(6) 1; left:0; width: 100%; top: 100px;}
+    .event4:hover .line4{animation: event44 0.5s steps(6) 1; left:0; width: 100%; top: 150px;}
+    @keyframes event41{
+        0%{width: 0%;left: 50%;}
+        100%{width: 100%; left: 0;}
+    }
+    @keyframes event42{
+        0%{width: 0%;left: 50%;}
+        30%{width: 0%;left: 50%;}
+        100%{width: 100%; left: 0;}
+    }
+    @keyframes event43{
+        0%{width: 0%;left: 50%;}
+        50%{width: 0%;left: 50%;}
+        100%{width: 100%; left: 0;}
+    }
+    @keyframes event44{
+        0%{width: 0%;left: 50%;}
+        70%{width: 0%;left: 50%;}
+        100%{width: 100%; left: 0;}
+    }
+    @keyframes event4Hover{
+        0%{opacity: 0;}
+        70%{opacity: 0;}
+        100%{opacity: 1;}
+    }
+    .imgHoverEvent{position: relative;}
+    .event5 .imgBox{transform-origin: 0% 0%;}
+    .event5 .hoverBox{transform: rotateX(-90deg);transform-origin: 100% 100%; background: #000}
+    .event5 .hoverBox p{color:#fff;}
+    .event5:hover .imgBox{transform: rotateX(90deg); animation: event5Ani 0.5s linear 1;}
+    .event5:hover .hoverBox{transform: rotateX(0deg); animation: event5Ani2 0.8s linear 1;}
+    @keyframes event5Ani {
+        0%{transform: rotateX(0)}
+        100%{transform: rotateX(90deg)}
+    }
+    @keyframes event5Ani2 {
+        0%{transform: rotateX(-90deg)}
+        30%{transform: rotateX(-90deg)}
+        100%{transform: rotateX(0)}
+    }
+    .event6 .hoverBox{opacity: 0;}
+    .event6 .imgBox{position: relative;}
+    .event6:hover .imgBox{animation: event6Ani 0.6s linear 1; left: -200px;}
+    .event6:hover .hoverBox{animation: event6Ani2 0.6s linear 1; opacity: 1;}
+    @keyframes event6Ani{
+        0%{left: 0; transform: scale(1,1)}
+        50%{left: 0; transform: scale(0.5,0.5)}
+        100%{left: -200px; transform: scale(0.5,0.5)}
+    }
+    @keyframes event6Ani2{
+        0%{opacity: 0; transform: scale(0.7,0.7)}
+        60%{opacity: 0;transform: scale(0.7,0.7)}
+        100%{opacity: 1;transform: scale(1,1)}
+    }
+
+    .event7 .hoverBox span{display: block; border: 4px solid #ccc; position: absolute; top: 50%; transform: translateY(-50%); height: 30px; width: 80%; left: 10%;transition: 0.5s;}
+    .event7 .hoverBox span p{ opacity: 0; }
+    .event7:hover .hoverBox span{animation: event7Ani 0.8s linear 1; height: 150px;}
+    .event7:hover .hoverBox span p{animation: event7Ani2 0.8s linear 1; opacity: 1;}
+
+    @keyframes event7Ani{
+        0%{height: 30px;}
+        80%{height: 150px;}
+        100%{height: 150px;;}
+    }
+    @keyframes event7Ani2{
+        0%{opacity: 0;}
+        80%{opacity: 0;}
+        100%{opacity: 1;}
+    }
+
+    .event8 .hoverBox span p{color:#fff;}
+    .event8 .hoverBox span.span1{display: block; position: absolute; top: -90px; transition: 0.5s;
+        width:120%; height: 100px; line-height: 100px; background: #000; transform: rotate(10deg)
+    }
+    .event8 .hoverBox span.span2{
+        display: block; position: absolute; bottom: -90px;transition: 0.5s; left: -20px;
+        width:120%; height: 100px; line-height: 100px; background: #000; transform: rotate(10deg)
+    }
+    .event8:hover .hoverBox span.span1{top: -40px;}
+    .event8:hover .hoverBox span.span2{bottom: -40px;}
+</style>
