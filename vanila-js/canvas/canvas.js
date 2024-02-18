@@ -40,7 +40,6 @@ function drawCircle(){
     ctx.lineWidth=5;
     ctx.beginPath();
     ctx.arc(mouse.x,mouse.y,50,0, Math.PI * 2);
-    ctx.stroke();
     ctx.fill(); //fill하면 red로 채워진다
 }
 
@@ -50,3 +49,11 @@ canvas.addEventListener('mousemove', function(e){
     mouse.y = e.y;
     drawCircle();
 })
+
+function animate(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height); //old paint를 지우게 해준다.
+    drawCircle();
+    requestAnimationFrame(animate); //old paint를 지우게 해준다.
+}
+
+animate();
