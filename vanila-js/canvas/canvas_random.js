@@ -29,7 +29,10 @@ class Particle{
         this.x += this.speedX;
         this.y += this.speedY;
         
-        //줄어드는 방향으로 만들기 
+        //줄어드는 방향으로 만들기 (일정 크기 이상인거 빠르게 줄어들게 하기)
+        if(this.size>0.2){
+            this.size -=0.1;
+        }
     }
 
     draw(){
