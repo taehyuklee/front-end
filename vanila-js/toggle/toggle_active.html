@@ -1,0 +1,37 @@
+
+
+<button id="activate-hover-button">Activate Hover</button>
+<div id="imgHoverEvent" class="hover-element">
+  <!-- Your hover content goes here -->dddddddddddd
+</div>
+
+<script>
+    var activateHoverButton = document.getElementById('activate-hover-button');
+var hoverElement = document.getElementById('imgHoverEvent');
+
+activateHoverButton.addEventListener('click', function() {
+  // 활성화 버튼을 클릭하면 hover-active 클래스를 토글
+  hoverElement.classList.toggle('hover-active');
+});
+
+</script>
+<style>
+.hover-element {
+  /* 기본 스타일 */
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.hover-element:hover {
+  /* 일반적인 hover 스타일 */
+  opacity: 1;
+}
+
+/* 활성화된 경우의 스타일 */
+.hover-element.hover-active {
+  /* 추가 또는 변경된 스타일 */
+  background-color: lightblue;
+}
+/*class에서 두개 이름을 가지고 있을 수 있다. 두개 모두 해당 클래스의 이름으로 간주됨
+그리고 hover-element.hover-active의 경우 hover-active가 html tag에 없더라도 나중에 toggle이용해서 생성 제거가 가능하므로 저렇게 사용한거임*/
+</style>
