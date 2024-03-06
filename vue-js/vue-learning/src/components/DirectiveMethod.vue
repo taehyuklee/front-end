@@ -1,53 +1,35 @@
 <template>
-
-    <!-- v-if 속성 : 아예 DOM으로 Rendering하지 않는다. -->
+  <div>
     <p v-if="seen"> 볼 수 있나? </p>
-
-
     <br>
-    <!-- v-show : DOM으로 Rendering은 해놓고 Painting여부만-->
     <p v-show="seen"> 볼 수 있나? </p>
-
     <br>
-    <button @click="doing(value)"> {{ value }} </button>
-
+    <!-- 함수 호출 부분에서 괄호를 제거 -->
+    <button @click="doing"> {{ value1 }} </button>
+  </div>
 </template>
 
-
 <script>
-
 import { ref } from 'vue'
 
-export default{
+export default {
+  name: 'DirectiveMethod',
+  setup() {
+    const value1 = ref(10);
 
-    name: 'DirectiveMethod',
+    const doing = () => {
+        //Javascript code에서는 ref 반응형 상태에 대해서 .value가 필요하다. 템플릿에서는 편의상 .value가 나올수 있게 해준것.
+      value1.value++;
+    };
 
-    setup(){
-
-        const value = ref(10);
-
-        return{
-            seen: true,
-            value
-        }
-    },
-
-    methods: {
-        doing(value){
-            console.log("하위");
-            console.log(value);
-            value++;
-            console.log(value);
-            return value++;
-        }
+    return {
+      seen: true,
+      value1,
+      doing
     }
-
+  },
 }
-
 </script>
 
-
 <style>
-
-
 </style>
