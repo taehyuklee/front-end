@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul class="type1">
+        <li>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </li>
+      </ul>
+</body>
+</html>
+
+<style>
+    ul{text-align: center;}
+    ul li{position: relative; display: inline-block; width: 150px; height: 150px; border: 1px solid #ccc;}
+
+    ul.type1 li span{position: absolute; background: darkblue; transition: all 0.5s;}
+    ul.type1 li span:nth-child(1) {left: 0; top: 0; width: 0; height: 1px;}
+    ul.type1 li span:nth-child(2) {right: 0; top: 0; width: 1px; height: 0;}
+    ul.type1 li span:nth-child(3) {right: 0; bottom: 0; width: 0; height: 1px;}
+    ul.type1 li span:nth-child(4) {left: 0; bottom: 0; width: 1px; height: 0;}
+    ul.type1 li:hover span:nth-child(1) {width: 100%;}
+    ul.type1 li:hover span:nth-child(2) {height: 100%;}
+    ul.type1 li:hover span:nth-child(3) {width: 100%;}
+    ul.type1 li:hover span:nth-child(4) {height: 100%;}
+</style>
