@@ -1,9 +1,29 @@
 <template>
   <!--<img alt="Vue logo" src="./assets/logo.png">-->
+  <br><br>
+  <h3>보간법에 관련된 내용입니다.</h3> <br>
   <InterpolationMethod/>
+
+  <br><br>
+  <h3>v-bind관련된 설명입니다.</h3> <br>
   <VBinding/>
+
+  <br><br>
+  <h3>이중중괄호 내의 Javascript 표현식에 대해서 설명하는 것입니다.</h3> <br>
   <JavascriptExpression/>
+
+  <br><br>
+  <h3>Directive Method에 대해서 전반적으로 설명하는 것입니다. </h3> <br>
   <DirectiveMethod/>
+
+  <br><br>
+  <h3>Script Setup 설명 입니다. - div를 클릭하면 count되게 됨. </h3>  <br>
+  <ScriptSetup/>
+
+  <br><br>
+  <h3> ReactiveObject관련 설명입니다.</h3> <br>
+  <ReactiveObject/>
+
 </template>
 
 <script>
@@ -11,6 +31,8 @@ import InterpolationMethod from './components/InterpolationMethod.vue';
 import VBinding from './components/VBinding.vue';
 import JavascriptExpression from './components/JavascriptExpression.vue';
 import DirectiveMethod from './components/DirectiveMethod.vue';
+import ScriptSetup from './components/reactive/ScriptSetup.vue';
+import ReactiveObject from './components/reactive/ReactiveObject.vue';
 
 
 //export default로 literal object형태로 내뱉는다.
@@ -20,7 +42,9 @@ export default {
     InterpolationMethod,
     VBinding,
     JavascriptExpression,
-    DirectiveMethod
+    DirectiveMethod,
+    ScriptSetup,
+    ReactiveObject
   }
 }
 </script>
