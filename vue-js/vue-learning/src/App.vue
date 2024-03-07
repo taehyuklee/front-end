@@ -24,6 +24,10 @@
   <h3> ReactiveObject관련 설명입니다.</h3> <br>
   <ReactiveObject/>
 
+  <br><br>
+  <h3> Computed 관련 설명입니다.</h3> <br>
+  <ComputedMethod/>
+
 </template>
 
 <script>
@@ -33,6 +37,7 @@ import JavascriptExpression from './components/JavascriptExpression.vue';
 import DirectiveMethod from './components/DirectiveMethod.vue';
 import ScriptSetup from './components/reactive/ScriptSetup.vue';
 import ReactiveObject from './components/reactive/ReactiveObject.vue';
+import ComputedMethod from './components/computed/ComputedMethod.vue';
 
 
 //export default로 literal object형태로 내뱉는다.
@@ -44,7 +49,8 @@ export default {
     JavascriptExpression,
     DirectiveMethod,
     ScriptSetup,
-    ReactiveObject
+    ReactiveObject,
+    ComputedMethod
   }
 }
 </script>
