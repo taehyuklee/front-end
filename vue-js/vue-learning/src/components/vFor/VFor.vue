@@ -25,13 +25,19 @@
         </li>
 
     </ul>
+
+    <br>
+    <!-- Vanila js로 구현했을 때-->
+    <ul id="board"></ul>
 </template>
 
 
 <script>
 import {reactive, computed} from 'vue';
 
+
 export default{
+    
 
     setup(){ //setup <- steup으로 되어 있었음
 
@@ -80,6 +86,33 @@ export default{
     }
 }
 
+/**
+ 
+const lists = document.getElementById('board');
+
+//일반 Javascript처럼 한 번 구현해보자.
+const vanilaJavaList = [
+            {id: 1, message: 'Java'},
+            {id: 2, message: 'HTML'},
+            {id: 3, message: 'CSS'},
+            {id: 4, message: 'JavaScript'},
+        ];
+
+for(let i=0; i<vanilaJavaList.length; i++){
+    const element = vanilaJavaList[i];
+
+    const li = document.createElement('li');
+    li.className = element.id;
+    li.textContent = element.message;
+
+    lists.appendChild(li);
+
+}
+
+//Vue에서는 setup밖에 이게 있으니까 안되는데? 일반 js코드는 안되는건가?
+
+
+ */
 
 </script>
 
