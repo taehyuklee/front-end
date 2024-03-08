@@ -28,6 +28,14 @@
   <h3> Computed 관련 설명입니다.</h3> <br>
   <ComputedMethod/>
 
+  <br><br>
+  <h3> v-if v-show 관련 설명입니다.</h3> <br>
+  <VIf/>
+
+  <br><br>
+  <h3> v-for 관련 설명입니다.</h3> <br>
+  <VFor/>
+
 </template>
 
 <script>
@@ -38,6 +46,8 @@ import DirectiveMethod from './components/DirectiveMethod.vue';
 import ScriptSetup from './components/reactive/ScriptSetup.vue';
 import ReactiveObject from './components/reactive/ReactiveObject.vue';
 import ComputedMethod from './components/computed/ComputedMethod.vue';
+import VIf from './components/conditional/VIf.vue';
+import VFor from './components/vFor/VFor.vue';
 
 
 //export default로 literal object형태로 내뱉는다.
@@ -50,7 +60,9 @@ export default {
     DirectiveMethod,
     ScriptSetup,
     ReactiveObject,
-    ComputedMethod
+    ComputedMethod,
+    VIf,
+    VFor
   }
 }
 </script>
