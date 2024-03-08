@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul id="board"></ul>
+    
+</body>
+</html>
+
+<script>
+
+const vanilaJavaList = [
+    {id: 1, message: 'Java'},
+    {id: 2, message: 'HTML'},
+    {id: 3, message: 'CSS'},
+    {id: 4, message: 'JavaScript'},
+];
+
+const listUp = document.getElementById('board');
+
+for(let i=0; i<vanilaJavaList.length; i++){
+
+    const element = vanilaJavaList[i];
+    console.log(element.message);
+
+    const li = document.createElement('li');
+
+    li.className = element.id;
+    li.textContent = element.message;
+
+    listUp.appendChild(li);
+}
+
+
+
+</script>
