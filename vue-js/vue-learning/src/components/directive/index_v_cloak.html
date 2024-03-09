@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+
+<div id = "app">
+    <!-- v-cloak은 component가 준비되면 v-cloack 속성을 지워준다 굳이 js로 구현하면 class로 구현할 수 있긴 하겠다-->
+    <p v-cloak> {{good}} </p>
+</div>
+
+<script>
+
+    const App= { //App에서 Vue가 없으면 그냥 innerHTML로 rendering된다고 하긴 했음.
+        data(){
+            return{
+                good: "안녕하세요",
+            }
+        },
+    }
+
+    setTimeout(()=> {
+        Vue.createApp(App).mount('#app');
+    }, 3000);
+   
+</script>
+
+
+<style>
+    [v-cloak]{
+        display: none;
+    }
+
+</style>
+
+    
+</body>
+</html>

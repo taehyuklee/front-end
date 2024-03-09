@@ -42,7 +42,7 @@
 import InterpolationMethod from './components/InterpolationMethod.vue';
 import VBinding from './components/VBinding.vue';
 import JavascriptExpression from './components/JavascriptExpression.vue';
-import DirectiveMethod from './components/DirectiveMethod.vue';
+import DirectiveMethod from './components/directive/DirectiveMethod.vue';
 import ScriptSetup from './components/reactive/ScriptSetup.vue';
 import ReactiveObject from './components/reactive/ReactiveObject.vue';
 import ComputedMethod from './components/computed/ComputedMethod.vue';
@@ -77,3 +77,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+./components/directive/DirectiveMethod.vue
