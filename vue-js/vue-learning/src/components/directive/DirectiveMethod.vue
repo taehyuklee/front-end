@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- v-directive는 v-directive:속성 = "javascript code"<- 마지막이 value라는데 결국 script에서 받아오는 변수나 함수를 의미하게 됨   -->
     <p v-if="seen"> 볼 수 있나? </p>
     <br>
     <p v-show="seen"> 볼 수 있나? </p>
