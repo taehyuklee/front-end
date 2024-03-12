@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="good"> Hi</div>
+
+  <input type="text" name="hi">
+
+  <button>ggg</button>
+  <input type="button" value="button2">
+
+  <br>
+
+  <input type="text" onchange="alert(this.value)"> <!--바뀔때 onchange될때 -->
+  <input type="button" value="버튼">
+
+  <br>
+
+  <select onchange="alert(this.value)">
+    <option value="">선택하세요.</option>
+    <option value="1">옵션 1</option>
+    <option value="2">옵션 2</option>
+    <option value="3">옵션 3</option>
+  </select>
+
+  <br>
+
+  <input type="text" id="gooJob" oninput="inpuFunc()"> oninput: <span id="result"></span>
+
+  
+</body>
+</html>
+
+<script>
+
+const inpuFunc = function() {
+    console.log("      sssss");
+    result.innerHTML = gooJob.value;
+  };
+
+//원래는 getElementById로 가져와야하는데, 요즘 편하게 바로 id를 쓸수 있네 아래처럼.
+// gooJob.oninput = function() {
+//     result.innerHTML = gooJob.value;
+//   };
+
+</script>
