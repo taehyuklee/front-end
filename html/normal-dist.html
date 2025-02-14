@@ -6,7 +6,7 @@
 
   <title>http://exceluser.com/downloads/examples/post_900_102/index.htmlt</title>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jstat/1.9.6/jstat.js" integrity="sha512-MN0us5YWgC/39SjILvwt7/54yevWDlXVmzhVEfxGfnLGdyEoGisHb4ycAnk4BrT+47w8qj2LMjRr4bNeGZfYNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="http://www.google.com/jsapi?ext.js"></script>
 
@@ -55,7 +55,7 @@ function createArray(xMin, xMax, xLeft, xRight, mean, stndDev) {
     chartData[index][0] = i;
     chartData[index][1] = jStat.normal.pdf(i, mean, stndDev);
 
-    if (i < xLeft || i > xRight) {
+    if (i < xLeft + 0.1 || i > xRight) {
       chartData[index][2] = false;
     }
     chartData[index][3] =
@@ -65,6 +65,7 @@ function createArray(xMin, xMax, xLeft, xRight, mean, stndDev) {
   }
   return chartData;
 }
+
 function drawChart() {
   chart = new google.visualization.AreaChart(
     document.getElementById("chart_div")
