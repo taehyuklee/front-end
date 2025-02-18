@@ -18,7 +18,7 @@ const routes = [
     // component: () => import(/* webpackChunkName: "about2" */ '../views/AboutView.vue')
 
     // 아래 webpackPreFetch Option이란 무엇인가?
-    component: () => import(/* webpackChunkName: "about2", webpackPrefetch:true */ '../views/AboutView.vue')
+    component: () => import(/* webpackChunkName: "about", webpackPrefetch:true */ '../views/AboutView.vue')
 
   }
 ]
