@@ -3,18 +3,17 @@
   <div id="id">
     <!-- 문자열 Data Binding할때는 {{ }} 중괄호 두개를 사용한다. -->
     <h1>Hello {{ userName }}</h1>
-    <p></p>
+    <p>{{ message }}</p>
   </div>
 </template>
-
 
 <script>
 export default {
   // 함수인데 function key word를 사용하지 않는다.
   data() {
-    return{
-      userName:"John Doe",
-      message: '',
+    return {
+      userName: 'John Doe',
+      message: 'Welcome 개발자의 품격',
       arr: [],
       obj: {}
     }
