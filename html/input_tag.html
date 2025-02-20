@@ -1,0 +1,33 @@
+<!-- Check Box -->
+<input type="checkbox" id="good" name="hi" value="good" checked="true"> <!-- value는 초기값을 설정 checked - checked 설정 여부 -->
+<label for="good"> Good Job </label>
+
+<br>
+
+<!-- Radio Tab -->
+<input type="radio" id="good" name="hi" value="good"> <!-- value는 초기값을 설정 -->
+<label for="good"> Good Job </label>
+
+<br>
+
+<!-- Text -->
+<label for="good"> Good Job </label>
+<input type="text" id="good" name="hi" value="good"> <!-- value는 초기값을 설정 type이 text일때 -->
+
+<br>
+
+<!-- Check box name을 같게하면 Group으로 묶을수 있다. 즉 hobby라는 key값으로 List로 전체 값을 묶어서 보낼수 있다는 의미 -->
+<!-- 그리고 어떤 값을 묶어서 보내느냐, 그것은 value에 들어간 값을 보낸다는 의미이다. 뒤에 독서, 운동, 음악은 Label역할만 할 뿐임 -->
+<input type="checkbox" name="hobby" value="reading"> 독서
+<input type="checkbox" name="hobby" value="sports"> 운동
+<input type="checkbox" name="hobby" value="music"> 음악
+<!-- Input의 Value -->
+<button onclick="getCheckedValues()">선택 확인</button>
+
+<script>
+    function getCheckedValues() {
+        let checkedBoxes = document.querySelectorAll('input[name="hobby"]:checked');
+        let values = Array.from(checkedBoxes).map(cb => cb.value);
+        alert("선택된 취미: " + values.join(", "));
+    }
+</script>
