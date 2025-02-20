@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>City Selector</title>
+</head>
+<body>
+
+  <div>
+    <select id="citySelect">
+      <!-- Options will be populated here -->
+    </select>
+  </div>
+
+  <script>
+    // Data
+    const cities = [
+      { title: '서울', code: '02' },
+      { title: '부산', code: '051' },
+      { title: '제주', code: '064' }
+    ];
+
+    // Reference to the select element
+    const selectElement = document.getElementById('citySelect');
+
+    // Dynamically create option elements
+    cities.forEach(city => {
+      const option = document.createElement('option');
+      option.value = city.code;
+      option.textContent = city.title;
+      selectElement.appendChild(option);
+    });
+  </script>
+
+</body>
+</html>
