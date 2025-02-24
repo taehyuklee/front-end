@@ -86,6 +86,11 @@ const routes = [
     path: '/event/key',
     name: 'EventKeyView',
     component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/2_event/EventKeyView.vue')
+  },
+  {
+    path: '/extra/if',
+    name: 'RenderingIfView',
+    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/3_extra/RenderingIfView.vue')
   }
 ]
 
