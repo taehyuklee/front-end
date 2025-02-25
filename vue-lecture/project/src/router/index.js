@@ -106,6 +106,16 @@ const routes = [
     path: '/extra/watch',
     name: 'WatchView',
     component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/3_extra/WatchView.vue')
+  },
+  {
+    path: '/extra/lifecycle',
+    name: 'LifecycleHookView',
+    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/3_extra/LifecycleHookView.vue')
+  },
+  {
+    path: '/diagram/myComponent',
+    name: 'MyComponentView',
+    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/MyComponentView.vue')
   }
 ]
 
