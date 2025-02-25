@@ -75,47 +75,52 @@ const routes = [
   {
     path: '/event/click',
     name: 'EventClickView',
-    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/2_event/EventClickView.vue')
+    component: () => import(/* webpackChunkName: "event", webpackPrefetch:true */ '../views/2_event/EventClickView.vue')
   },
   {
     path: '/event/change',
     name: 'EventChangeView',
-    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/2_event/EventChangeView.vue')
+    component: () => import(/* webpackChunkName: "event", webpackPrefetch:true */ '../views/2_event/EventChangeView.vue')
   },
   {
     path: '/event/key',
     name: 'EventKeyView',
-    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/2_event/EventKeyView.vue')
+    component: () => import(/* webpackChunkName: "event", webpackPrefetch:true */ '../views/2_event/EventKeyView.vue')
   },
   {
     path: '/extra/if',
     name: 'RenderingIfView',
-    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/3_extra/RenderingIfView.vue')
+    component: () => import(/* webpackChunkName: "extra", webpackPrefetch:true */ '../views/3_extra/RenderingIfView.vue')
   },
   {
     path: '/extra/show',
     name: 'RenderingShowView',
-    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/3_extra/RenderingShowView.vue')
+    component: () => import(/* webpackChunkName: "extra", webpackPrefetch:true */ '../views/3_extra/RenderingShowView.vue')
   },
   {
     path: '/extra/computed',
     name: 'ComputedView',
-    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/3_extra/ComputedView.vue')
+    component: () => import(/* webpackChunkName: "extra", webpackPrefetch:true */ '../views/3_extra/ComputedView.vue')
   },
   {
     path: '/extra/watch',
     name: 'WatchView',
-    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/3_extra/WatchView.vue')
+    component: () => import(/* webpackChunkName: "extra", webpackPrefetch:true */ '../views/3_extra/WatchView.vue')
   },
   {
     path: '/extra/lifecycle',
     name: 'LifecycleHookView',
-    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/3_extra/LifecycleHookView.vue')
+    component: () => import(/* webpackChunkName: "extra", webpackPrefetch:true */ '../views/3_extra/LifecycleHookView.vue')
   },
   {
-    path: '/diagram/myComponent',
-    name: 'MyComponentView',
-    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/MyComponentView.vue')
+    path: '/diagram/conf-diagram',
+    name: 'ConfIntervalDiagram',
+    component: () => import(/* webpackChunkName: "databinding", webpackPrefetch:true */ '../views/ConfIntervalDiagram.vue')
+  },
+  {
+    path: '/reuse/pagetitle',
+    name: 'PageView',
+    component: () => import(/* webpackChunkName: "reuse", webpackPrefetch:true */ '../views/4_reuse/PageView.vue')
   }
 ]
 

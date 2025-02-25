@@ -1,12 +1,27 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-    <router-link to="/databinding/string">String</router-link>
-    <router-link to="/databinding/html">HTML</router-link>
-  </nav>
-  <router-view/>
+  <div>
+    <h3> d3 - Confidence Interval Diagram </h3>
+    <ConfIntervalDiagramVue :lowerBound="-47.64957075722661" :upperBound="216.7495707" :mean="84.55" :stdDev="95.389"></ConfIntervalDiagramVue>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+      <router-link to="/databinding/string">String</router-link>
+      <router-link to="/databinding/html">HTML</router-link>
+    </nav>
+    <router-view/>
+  </div>
 </template>
+
+<script>
+import ConfIntervalDiagramVue from './views/ConfIntervalDiagram.vue'
+
+export default {
+  components: {
+    ConfIntervalDiagramVue
+  }
+}
+</script>
 
 <style>
 #app {
