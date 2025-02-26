@@ -126,6 +126,11 @@ const routes = [
     path: '/reuse/parent',
     name: 'ParentView',
     component: () => import(/* webpackChunkName: "reuse", webpackPrefetch:true */ '../views/4_reuse/ParentView.vue')
+  },
+  {
+    path: '/reuse/list',
+    name: 'ListView',
+    component: () => import(/* webpackChunkName: "reuse", webpackPrefetch:true */ '../views/4_reuse/ListView.vue')
   }
 ]
 
