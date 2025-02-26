@@ -1,7 +1,8 @@
 <template>
   <div>
     <h3> d3 - Confidence Interval Diagram </h3>
-    <ConfIntervalDiagramVue :lowerBound="-47.64957075722661" :upperBound="216.7495707" :mean="84.55" :stdDev="95.389"></ConfIntervalDiagramVue>
+    <!-- <ConfIntervalDiagramVue :lowerBound="482.599114827485" :upperBound="518.400885172515" :mean="500.5" :stdDev="288.8194360957494"></ConfIntervalDiagramVue> -->
+    <ConfIntervalDiagramVue :upperBound="-0.693" :lowerBound="-1.95" :mean="-1.322" :stdDev="0.320"></ConfIntervalDiagramVue>
     <br><br><br><br><br><br><br><br><br><br><br><br>
     <nav>
       <router-link to="/">Home</router-link> |

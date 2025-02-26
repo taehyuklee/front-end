@@ -6,23 +6,23 @@
 import * as d3 from 'd3'
 
 export default {
-  name: 'GaussianChart',
+  name: 'D3ChartConfidenceIntervalDiagram', // 'GaussianChart',
   props: {
     mean: {
       type: Number,
-      default: 97.0
+      default: -1.029
     },
     stdDev: {
       type: Number,
-      default: 53.74011537017761
+      default: 0.176
     },
     lowerBound: {
       type: Number,
-      default: 22.52136858747795
+      default: -1.373
     },
     upperBound: {
       type: Number,
-      default: 171.47863141252205
+      default: -0.684
     },
     max: {
       type: Number,
@@ -35,29 +35,31 @@ export default {
   },
   computed: {
     // X축 범위 동적 설정
-    xDomain() {
+    xDomain () {
       return [this.dynamicMin, this.dynamicMax] // 주어진 lowerBound, upperBound
     },
     // Y축 범위 동적 설정
-    yDomain() {
+    yDomain () {
       const gaussian = (x) => (1 / (this.stdDev * Math.sqrt(2 * Math.PI))) * Math.exp(-0.5 * ((x - this.mean) / this.stdDev) ** 2)
       // X축 범위에 대한 gaussian 값 계산
-      const xValues = d3.range(this.min, this.max, 0.1)
+      const step = (this.dynamicMax - this.dynamicMin) / (600 / 2)
+      const xValues = d3.range(this.dynamicMin, this.dynamicMax, step)
       const maxY = Math.max(...xValues.map(x => gaussian(x)))
       return [0, maxY * 1.1] // Y축의 최대값을 Gaussian 함수 최대값의 10% 더 크게 설정
     },
     // X축 데이터 값 동적 생성
-    xValues() {
-      return d3.range(this.dynamicMin, this.dynamicMax, 0.1)
+    xValues () {
+      const step = (this.dynamicMax - this.dynamicMin) / (600 / 2) // width / 2 기준으로 step 결정
+      return d3.range(this.dynamicMin, this.dynamicMax, step)
     },
-    dynamicMin() {
+    dynamicMin () {
       return this.mean - 3.1 * this.stdDev
     },
-    dynamicMax() {
+    dynamicMax () {
       return this.mean + 3.1 * this.stdDev
     }
   },
-  mounted() {
+  mounted () {
     const width = 600
     const height = 400
     const margin = { top: 20, right: 70, bottom: 50, left: 50 }
@@ -144,32 +146,32 @@ export default {
 </script>
 
 <style>
-  .chart-container {
-    position: relative;
-  }
+.chart-container {
+  position: relative;
+}
 
-  .line {
-    fill: none;
-    stroke: blue;
-    stroke-width: 2;
-  }
+.line {
+  fill: none;
+  stroke: blue;
+  stroke-width: 2;
+}
 
-  .ci-line {
-    stroke: red;
-    stroke-width: 2;
-    stroke-dasharray: 5,5;
-  }
+.ci-line {
+  stroke: red;
+  stroke-width: 2;
+  stroke-dasharray: 5,5;
+}
 
-  .ci-line-mean {
-    stroke: black;
-    stroke-width: 2;
-    stroke-dasharray: 5,5;
-  }
+.ci-line-mean {
+  stroke: black;
+  stroke-width: 2;
+  stroke-dasharray: 5,5;
+}
 
-  .label {
-    font-size: 12px;
-    fill: black;
-    text-anchor: middle;
-    font-weight: bold;
-  }
+.label {
+  font-size: 12px;
+  fill: black;
+  text-anchor: middle;
+  font-weight: bold;
+}
 </style>
