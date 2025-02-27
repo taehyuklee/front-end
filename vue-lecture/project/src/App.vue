@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h3> d3 - Confidence Interval Diagram </h3>
+    <!-- <h3> d3 - Confidence Interval Diagram </h3> -->
     <!-- <ConfIntervalDiagramVue :lowerBound="482.599114827485" :upperBound="518.400885172515" :mean="500.5" :stdDev="288.8194360957494"></ConfIntervalDiagramVue> -->
-    <ConfIntervalDiagramVue :upperBound="-0.693" :lowerBound="-1.95" :mean="-1.322" :stdDev="0.320"></ConfIntervalDiagramVue>
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- <ConfIntervalDiagramVue :upperBound="-0.693" :lowerBound="-1.95" :mean="-1.322" :stdDev="0.320"></ConfIntervalDiagramVue> -->
+    <!-- <br><br><br><br><br><br><br><br><br><br><br><br> -->
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -15,17 +15,17 @@
 </template>
 
 <script>
-import ConfIntervalDiagramVue from './views/ConfIntervalDiagram.vue'
+// import ConfIntervalDiagramVue from './views/ConfIntervalDiagram.vue'
 
 export default {
   components: {
-    ConfIntervalDiagramVue
+    // ConfIntervalDiagramVue
   }
 }
 </script>
 
 <style>
-#app {
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -44,5 +44,5 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>
