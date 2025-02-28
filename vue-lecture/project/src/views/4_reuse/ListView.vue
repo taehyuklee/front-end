@@ -48,7 +48,7 @@ export default {
         },
         {
           drinkId: '4',
-          drinkName: '오렌지주스',
+          drinkName: '사이다',
           price: 1200,
           qty: 1
         }
