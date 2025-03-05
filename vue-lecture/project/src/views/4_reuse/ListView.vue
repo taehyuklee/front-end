@@ -4,7 +4,7 @@
     <button class="btn btn-primary me-1" @click="doSearch">조회</button> <!-- me-1 : margin end -->
     <button class="btn btn-danger" @click="doDelete">삭제</button>
 
-    <simple-grid selectedType="checkbox" :headers="headers" :items="drinkList"></simple-grid>
+    <simple-grid selectedType="checkbox" :headers="headers" :items="drinkList" checkedKey="drinkId"></simple-grid>
   </div>
 </template>
 <script>
