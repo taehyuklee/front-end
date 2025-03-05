@@ -5,9 +5,11 @@
         <tr>
           <th v-if="selectedType==='checkbox'">
             <input type="checkbox"
-             class="form-check-input"
-             @change="checkAll($emit)"/>
+              class="form-check-input"
+              @change="checkAll($emit)"/>
             </th>
+          <th v-else-if="selectedType==='radio'">
+          </th>
           <th :key="th.key" v-for="th in headers"> {{ th.title }}</th>
         </tr>
       </thead>
@@ -23,7 +25,15 @@
               @change="doChecked($emit)"
             />
           </td>
-          <td v-else-if="selectedType==='radio'"><input type="radio" class="form-check-input"/></td>
+          <td v-else-if="selectedType==='radio'">
+            <input
+              type="radio"
+              class="form-check-input"
+              :value="item[checkedKey]"
+              v-model="checkedItem"
+              @change="doChecked($emit)"
+              />
+          </td>
           <!-- js에서 객체 접근은 아래와 같고 Map형태의 객체는 .get을 사용 가능 -->
           <td :key="th.key" v-for="th in headers">{{ item[th.key] }}</td>
         </tr>
@@ -54,12 +64,19 @@ export default {
     checkedKey: {
       type: String,
       defautl: ''
+    },
+    checkedEventName: {
+      type: String,
+      default: ''
     }
   },
   data() {
     return {
       sampleData: '',
-      checkedItems: []
+      // checkbox일때의 value값을 모으기 위함 : value가 v-bind된다 checkedItems변수에
+      checkedItems: [],
+      // radio일때의 value값을 표기하기 위함
+      checkedItem: ''
     }
   },
   setup() {},
@@ -69,11 +86,14 @@ export default {
   methods: {
     doChecked(event) {
       // console.log(this.checkedItems)
-      this.$emit('change-item', this.checkedItems)
+      if (this.selectedType === 'checkbox') {
+        this.$emit(this.checkedEventName, this.checkedItems)
+      } else if (this.selectedType === 'radio') {
+        this.$emit(this.checkedEventName, this.checkedItem)
+      }
     },
     checkAll(event) {
       console.log(event.target.checked)
-      
     }
   }
 }

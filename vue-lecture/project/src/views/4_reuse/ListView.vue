@@ -4,10 +4,12 @@
     <button class="btn btn-primary me-1" @click="doSearch">조회</button> <!-- me-1 : margin end -->
     <button class="btn btn-danger" @click="doDelete">삭제</button>
 
-    <simple-grid selectedType="checkbox"
-     :headers="headers"
-     :items="drinkList"
+    <simple-grid
+      :selectedType="selectType"
+      :headers="headers"
+      :items="drinkList"
       checkedKey="drinkId"
+      checkedEventName="change-item"
       @change-item="changeCheckdValue"
       ></simple-grid>
   </div>
@@ -25,7 +27,10 @@ export default {
       ],
       drinkList: [],
       // 자식 component에서 $emit으로 check할때마다 전달되는 items를 받아와야 한다.
-      checkedItems: []
+      checkedItems: [],
+      // radio tab일때는 하나만 받으니까 아래와같이 checkdItem을 사용함.
+      checkedItem: '',
+      selectType: 'radio'
     }
   },
   setup() {},
@@ -63,18 +68,15 @@ export default {
     },
     doDelete() {
       // 삭제 실행 - 삭제할 아이템 에 대한 제품 번호 this.checkedItems
-      for(let i=0; i<this.drinkList.length; i++){
-        for(let j=0; j<this.checkedItems.length; j++){
-          if(this.drinkList[i].drinkId == this.checkedItems[i][1]){
-            this.drinkList.remove(drinkList[i])
-          }
-        }
-      }
     },
     changeCheckdValue(data) {
       console.log('선택된 아이템', data)
-      // 자식 Component에서 check한 Item을 부모한테 전달해 주게 된다.
-      this.checkedItems = data
+      if (this.selectType === 'checkbox') {
+        // 자식 Component에서 check한 Item을 부모한테 전달해 주게 된다.
+        this.checkedItems = data
+      } else if (this.selectType === 'radio') {
+        this.checkedItem = data
+      }
     }
   }
 }
