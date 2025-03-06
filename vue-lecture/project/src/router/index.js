@@ -141,6 +141,11 @@ const routes = [
     path: '/advanced/provide',
     name: 'ProvideView',
     component: () => import(/* webpackChunkName: "advanced", webpackPrefetch:true */ '../views/5_advanced/ProvideView.vue')
+  },
+  {
+    path: '/advanced/directive',
+    name: 'CustomDirectiveView',
+    component: () => import(/* webpackChunkName: "advanced", webpackPrefetch:true */ '../views/5_advanced/CustomDirectiveView.vue')
   }
 ]
 
