@@ -5,7 +5,9 @@
     <!-- <ConfIntervalDiagramVue :upperBound="-0.693" :lowerBound="-1.95" :mean="-1.322" :stdDev="0.320"></ConfIntervalDiagramVue> -->
     <!-- <br><br><br><br><br><br><br><br><br><br><br><br> -->
     <header-layout></header-layout>
-    <router-view/>
+    <div class="container">
+      <router-view/>
+    </div>
     <footer-layout></footer-layout>
   </div>
 </template>
