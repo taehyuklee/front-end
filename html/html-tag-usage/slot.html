@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fallback Slot 예제</title>
+</head>
+<body>
+
+  <my-box></my-box> <!-- slot에 내용이 없으면 기본 텍스트가 표시됨 -->
+
+  <script>
+    class MyBox extends HTMLElement {
+      constructor() {
+        super();
+        const shadow = this.attachShadow({ mode: "open" });
+
+        shadow.innerHTML = `
+          <style>
+            .box {
+              padding: 15px;
+              border: 2px dashed gray;
+              width: 150px;
+              text-align: center;
+            }
+          </style>
+          <div class="box">
+            <slot>기본 텍스트</slot> <!-- 아무것도 없으면 이 내용이 보임 -->
+          </div>
+        `;
+      }
+    }
+
+    customElements.define("my-box", MyBox);
+  </script>
+
+</body>
+</html>
