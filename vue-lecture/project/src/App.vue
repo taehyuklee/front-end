@@ -4,22 +4,22 @@
     <!-- <ConfIntervalDiagramVue :lowerBound="482.599114827485" :upperBound="518.400885172515" :mean="500.5" :stdDev="288.8194360957494"></ConfIntervalDiagramVue> -->
     <!-- <ConfIntervalDiagramVue :upperBound="-0.693" :lowerBound="-1.95" :mean="-1.322" :stdDev="0.320"></ConfIntervalDiagramVue> -->
     <!-- <br><br><br><br><br><br><br><br><br><br><br><br> -->
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-      <router-link to="/databinding/string">String</router-link>
-      <router-link to="/databinding/html">HTML</router-link>
-    </nav>
+    <header-layout></header-layout>
     <router-view/>
+    <footer-layout></footer-layout>
   </div>
 </template>
 
 <script>
+import HeaderLayout from '@/components/layouts/HeaderLayout.vue'
+import FooterLayout from '@/components/layouts/FooterLayout.vue'
 // import ConfIntervalDiagramVue from './views/ConfIntervalDiagram.vue'
 
 export default {
   components: {
     // ConfIntervalDiagramVue
+    HeaderLayout,
+    FooterLayout
   }
 }
 </script>
