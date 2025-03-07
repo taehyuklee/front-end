@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// index.js의 경우 해당 디렉토리 path만 등록해줘도 알아서 가져오게 된다.
+import mixin from './mixins'
 import PageTitle from './components/fragments/PageTitle.vue'
 // bootstrap의 경우 전역으로 import해서 사용해야 하므로 main.js에서 시작한다.
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -13,6 +15,9 @@ app.use(store)
 app.use(router)
 // 전역 component등록
 app.component('page-title', PageTitle)
+
+// 전역 mixin 등록
+app.mixin(mixin)
 
 // Custom Directive의 경우 전역에서 사용하는 것이 맞기에 main.js에 app.directive속성에 직접 넣어주도록 한다.
 app.directive('focus', {
