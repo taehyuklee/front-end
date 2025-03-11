@@ -8,6 +8,7 @@
         <label for="todo" class="form-label">할 일</label>
         <input type="text" name="" id="" class="form-control" v-model="todo">
         <button class="btn btn-primary" @click="addItem"> 추가 (mutation) </button>
+        <button class="btn btn-primary" @click="addItem2"> 추가 (action) </button>
       </div>
       <table class="table table-bordered table-striped">
         <thead>
@@ -73,6 +74,10 @@ export default {
     },
     doneYn(id, event) {
       this.$store.commit('doneYn', { id: id, done: !event.target.checked })
+    },
+    // 위에서는 mutation을 이용한거고 그 아래는 action을 이용하기 위해 dispatch를 이용해야 한다.
+    addItem2() {
+      this.$store.dispatch('add', { id: 4, title: 'todo4', done: false })
     }
   }
 }
