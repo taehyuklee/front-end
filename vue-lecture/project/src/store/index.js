@@ -40,8 +40,8 @@ export default createStore({
     remove(state, id) {
       state.todos = state.todos.filter((todo) => todo.id !== id)
     },
-    done(state, id) {
-      state.todos = state.todos.filter((todo) => todo.id === id)[0].done = true
+    doneYn(state, doneStatus) {
+      state.todos.filter((todo) => todo.id === doneStatus.id)[0].done = doneStatus.done
     }
   },
   // mutations 하고 비슷한데,
