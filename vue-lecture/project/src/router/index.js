@@ -293,6 +293,22 @@ const routes = [
       import(
         /* webpackChunkName: "module", webpackPrefetch:true */ '../views/9_module/KakaoMapView.vue'
       )
+  },
+  {
+    path: '/module/font',
+    name: 'FontAwesomeView',
+    component: () =>
+      import(
+        /* webpackChunkName: "module", webpackPrefetch:true */ '../views/9_module/FontAwesomeView.vue'
+      )
+  },
+  {
+    path: '/module/calendar',
+    name: 'FullCalendarView',
+    component: () =>
+      import(
+        /* webpackChunkName: "module", webpackPrefetch:true */ '../views/9_module/FullCalendarView.vue'
+      )
   }
 ]
 

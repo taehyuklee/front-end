@@ -13,6 +13,16 @@ import PageTitle from './components/fragments/PageTitle.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 
+// FonrtAwsome을 쓰고 싶을때 (이렇게 할 수도 있고 component처럼 등록해서 사용 가능하기도 하지만, cdn으로 추가해서 사용 가능)
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret, faUserClock } from '@fortawesome/free-solid-svg-icons'
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+// fontawesome 사용
+library.add(faUserSecret)
+library.add(faUserClock)
+
 // key, value 똑같을때 생략 가능 원래는 {en:en, ko:ko} 임.
 const i18nStrings = { en, ko }
 /*
@@ -37,6 +47,9 @@ app.use(store)
 app.use(router)
 // 전역 component등록
 app.component('page-title', PageTitle)
+
+// component에 fontawsome관련된 Library를 component등록해줘야 한다.
+app.component('font-awesome-icon', FontAwesomeIcon)
 
 // 전역 mixin 등록
 app.mixin(mixin)
