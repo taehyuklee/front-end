@@ -259,7 +259,7 @@ const routes = [
     name: 'SetupView',
     component: () =>
       import(
-        /* webpackChunkName: "vuex", webpackPrefetch:true */ '../views/7_composition/SetupView.vue'
+        /* webpackChunkName: "composition", webpackPrefetch:true */ '../views/7_composition/SetupView.vue'
       )
   },
   {
@@ -267,7 +267,7 @@ const routes = [
     name: 'RefView',
     component: () =>
       import(
-        /* webpackChunkName: "vuex", webpackPrefetch:true */ '../views/7_composition/RefView.vue'
+        /* webpackChunkName: "composition", webpackPrefetch:true */ '../views/7_composition/RefView.vue'
       )
   },
   {
@@ -275,7 +275,23 @@ const routes = [
     name: 'FuncView',
     component: () =>
       import(
-        /* webpackChunkName: "vuex", webpackPrefetch:true */ '../views/7_composition/FuncView.vue'
+        /* webpackChunkName: "composition", webpackPrefetch:true */ '../views/7_composition/FuncView.vue'
+      )
+  },
+  {
+    path: '/login/kakao',
+    name: 'KakaoLoginView',
+    component: () =>
+      import(
+        /* webpackChunkName: "login", webpackPrefetch:true */ '../views/8_login/KakaoLoginView.vue'
+      )
+  },
+  {
+    path: '/module/map',
+    name: 'KakaoMapView',
+    component: () =>
+      import(
+        /* webpackChunkName: "module", webpackPrefetch:true */ '../views/9_module/KakaoMapView.vue'
       )
   }
 ]
