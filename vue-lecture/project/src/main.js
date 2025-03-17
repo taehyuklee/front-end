@@ -19,6 +19,10 @@ import { faUserSecret, faUserClock } from '@fortawesome/free-solid-svg-icons'
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+// Sweet Alert2 import
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
+
 // fontawesome 사용
 library.add(faUserSecret)
 library.add(faUserClock)
@@ -56,6 +60,9 @@ app.mixin(mixin)
 
 // plugin 등록
 app.use(i18nPlugin, i18nStrings)
+
+// sweetAlert2 사용
+app.use(VueSweetalert2)
 
 // Custom Directive의 경우 전역에서 사용하는 것이 맞기에 main.js에 app.directive속성에 직접 넣어주도록 한다.
 app.directive('focus', {

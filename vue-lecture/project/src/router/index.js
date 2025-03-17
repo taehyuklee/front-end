@@ -309,6 +309,14 @@ const routes = [
       import(
         /* webpackChunkName: "module", webpackPrefetch:true */ '../views/9_module/FullCalendarView.vue'
       )
+  },
+  {
+    path: '/module/sweetlaert2',
+    name: 'SweetAlert2View',
+    component: () =>
+      import(
+        /* webpackChunkName: "module", webpackPrefetch:true */ '../views/9_module/SweetAlert2View.vue'
+      )
   }
 ]
 

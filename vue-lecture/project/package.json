@@ -23,7 +23,9 @@
     "d3": "^7.9.0",
     "vue": "^3.2.13",
     "vue-cookies": "^1.8.6",
+    "vue-good-table-next": "^0.2.2",
     "vue-router": "^4.0.3",
+    "vue-sweetalert2": "^5.0.11",
     "vuex": "^4.0.0",
     "vuex-persistedstate": "^4.1.0"
   },
