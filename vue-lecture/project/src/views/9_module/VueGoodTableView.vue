@@ -2,7 +2,29 @@
   <div>
     <vue-good-table
       :columns="columns"
-      :rows="rows"/>
+      :rows="rows"
+      :line-numbers="true"
+      v-on:row-click="onRowClick"
+      :search-options="{
+        enabled: true,
+        trigger: 'enter'
+      }"
+      :pagination-options="{
+        enabled: true,
+        mode: 'records',
+        perPage: 5,
+        position: 'top',
+        perPageDropdown: [3, 7, 9],
+        dropdownAllowAll: false,
+        setCurrentPage: 2,
+        nextLabel: 'next',
+        prevLabel: 'prev',
+        rowsPerPageLabel: 'Rows per page',
+        ofLabel: 'of',
+        pageLabel: 'page', // for 'pages' mode
+        allLabel: 'All',
+        infoFn: (params) => `my own page ${params.firstRecordOnPage}`,
+      }"/>
   </div>
 </template>
 
@@ -42,6 +64,11 @@ export default {
         { id: 5, name: 'Dan', age: 40, createdAt: '2011-10-21', score: 0.03343 },
         { id: 6, name: 'John', age: 20, createdAt: '2011-10-31', score: 0.03343 }
       ]
+    }
+  },
+  methods: {
+    onRowClick(params) {
+      console.log(params)
     }
   }
 }
