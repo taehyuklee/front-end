@@ -317,6 +317,14 @@ const routes = [
       import(
         /* webpackChunkName: "module", webpackPrefetch:true */ '../views/9_module/SweetAlert2View.vue'
       )
+  },
+  {
+    path: '/module/table',
+    name: 'VueGoodTableView',
+    component: () =>
+      import(
+        /* webpackChunkName: "module", webpackPrefetch:true */ '../views/9_module/VueGoodTableView.vue'
+      )
   }
 ]
 

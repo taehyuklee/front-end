@@ -23,6 +23,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 
+import VueGoodTablePlugin from 'vue-good-table-next'
+
+// import the styles
+import 'vue-good-table-next/dist/vue-good-table-next.css'
+
 // fontawesome 사용
 library.add(faUserSecret)
 library.add(faUserClock)
@@ -63,6 +68,9 @@ app.use(i18nPlugin, i18nStrings)
 
 // sweetAlert2 사용
 app.use(VueSweetalert2)
+
+// vue good table 사용
+app.use(VueGoodTablePlugin)
 
 // Custom Directive의 경우 전역에서 사용하는 것이 맞기에 main.js에 app.directive속성에 직접 넣어주도록 한다.
 app.directive('focus', {
