@@ -156,7 +156,7 @@ header .image-text .profession {
   transition: var(--tran-05);
 }
 
-body.dark .sidebar header .toggle {
+#body.dark .sidebar header .toggle {
   color: var(--text-color);
 }
 
@@ -207,8 +207,8 @@ body.dark .sidebar header .toggle {
 .sidebar li a:hover .text {
   color: var(--sidebar-color);
 }
-body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text {
+#body.dark .sidebar li a:hover .icon,
+#body.dark .sidebar li a:hover .text {
   color: var(--text-color);
 }
 
@@ -240,10 +240,10 @@ body.dark .sidebar li a:hover .text {
 .mode .sun-moon i.sun {
   opacity: 0;
 }
-body.dark .mode .sun-moon i.sun {
+#body.dark .mode .sun-moon i.sun {
   opacity: 1;
 }
-body.dark .mode .sun-moon i.moon {
+#body.dark .mode .sun-moon i.moon {
   opacity: 0;
 }
 
@@ -280,7 +280,7 @@ body.dark .mode .sun-moon i.moon {
   transition: var(--tran-04);
 }
 
-body.dark .switch::before {
+#body.dark .switch::before {
   left: 20px;
 }
 
@@ -306,6 +306,6 @@ body.dark .switch::before {
   height: 100vh;
   width: calc(100% - 78px);
 }
-body.dark .home .text {
+#body.dark .home .text {
   color: var(--text-color);
 }

@@ -1,36 +1,53 @@
 <script setup>
     //import HelloWorld from './components/HelloWorld.vue'
+    import {ref} from 'vue'
 
+    //
+    const isSidebarClosed = ref(true);
+    // dark모드는 꺼놓음
+    const isDark = ref(false);
+
+    // toggle 하나만 Vue Style로 바꿔보자.
+    function isToggleSidebar() {
+      isSidebarClosed.value = !isSidebarClosed.value;
+    };
+
+    function isDarkMode() {
+      isDark.value = !isDark.value;
+
+    }
     
 
-    const body = document.querySelector('body'),
-      sidebar = body.querySelector('nav'),
-      toggle = body.querySelector(".toggle"),
-      searchBtn = body.querySelector(".search-box"),
-      modeSwitch = body.querySelector(".toggle-switch"),
-      modeText = body.querySelector(".mode-text");
+    // const body = document.querySelector('body'),
+    //   sidebar = body.querySelector('nav'),
+    //   toggle = body.querySelector(".toggle"),
+    //   searchBtn = body.querySelector(".search-box"),
+    //   modeSwitch = body.querySelector(".toggle-switch"),
+    //   modeText = body.querySelector(".mode-text");
+    
+    // toggle.addEventListener("click", () => {
+    //   sidebar.classList.toggle("close");
+    // })
 
-    toggle.addEventListener("click", () => {
-      sidebar.classList.toggle("close");
-    })
+    // searchBtn.addEventListener("click", () => {
+    //   sidebar.classList.remove("close");
+    // })
 
-    searchBtn.addEventListener("click", () => {
-      sidebar.classList.remove("close");
-    })
-
-    modeSwitch.addEventListener("click", () => {
-      body.classList.toggle("dark");
-      if (body.classList.contains("dark")) {
-        modeText.innerText = "Light mode";
-      } else {
-        modeText.innerText = "Dark mode";
-      }
-    });
+    // modeSwitch.addEventListener("click", () => {
+    //   body.classList.toggle("dark");
+    //   if (body.classList.contains("dark")) {
+    //     modeText.innerText = "Light mode";
+    //   } else {
+    //     modeText.innerText = "Dark mode";
+    //   }
+    // });
 </script>
 
 <template>
-  <div class="body">
-    <nav class="sidebar close">
+  <div id="body" :class="{dark: isDark}">
+
+    <div class="box"></div>
+    <nav :class= "{ sidebar: true, close: isSidebarClosed}">
       <header>
         <div class="image-text">
           <span class="image">
@@ -38,12 +55,12 @@
           </span>
 
           <div class="text logo-text">
-            <span class="name">Codinglab</span>
-            <span class="profession">Web developer</span>
+            <span class="name">Open APIs</span>
+            <span class="profession">for my service</span>
           </div>
         </div>
 
-        <i class='bx bx-chevron-right toggle'></i>
+        <i class='bx bx-chevron-right toggle' @click="isToggleSidebar" ></i>
       </header>
 
       <div class="menu-bar">
@@ -113,9 +130,10 @@
               <i class='bx bx-moon icon moon'></i>
               <i class='bx bx-sun icon sun'></i>
             </div>
-            <span class="mode-text text">Dark mode</span>
+            
+            <span class="mode-text text">{{ isDark ? 'Light mode' : 'Dark mode' }}</span>
 
-            <div class="toggle-switch">
+            <div class="toggle-switch" @click="isDarkMode">
               <span class="switch"></span>
             </div>
           </li>
@@ -132,6 +150,5 @@
 </template>
 
 <style scoped>
-
 
 </style>
