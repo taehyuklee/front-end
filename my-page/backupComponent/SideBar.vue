@@ -84,7 +84,7 @@
             <li class="nav-link">
               <a href="#">
                 <i class='bx bx-bar-chart-alt-2 icon'></i>
-                <span class="text nav-text">Interestings</span>
+                <span class="text nav-text">Revenue</span>
               </a>
             </li>
 
@@ -112,7 +112,7 @@
             <li class="nav-link">
               <a href="#">
                 <i class='bx bx-wallet icon'></i>
-                <span class="text nav-text">Coin-Topics</span>
+                <span class="text nav-text">Wallets</span>
               </a>
             </li>
 
