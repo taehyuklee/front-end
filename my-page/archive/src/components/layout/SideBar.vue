@@ -1,54 +1,35 @@
 <script setup>
     //import HelloWorld from './components/HelloWorld.vue'
-    import {ref} from 'vue'
+    // import {ref} from 'vue' //결론적으로 ref를 감싸야 vue에서 인식 가능 template에서
     // import '@/components/layout/style.css'
 
-    const isSidebarClosed = ref(true);
-    // dark모드는 꺼놓음
-    const isDark = ref(false);
+    defineProps({
+      isSidebarClosed: Boolean,
+      isDark: Boolean
+    })
+
+    defineEmits(['toggle-sidebar','toggle-dark'])
+
+    // const isSidebarClosed = ref(true);
+    // // dark모드는 꺼놓음
+    // const isDark = ref(false);
 
     
 
-    // toggle 하나만 Vue Style로 바꿔보자.
-    function isToggleSidebar() {
-      isSidebarClosed.value = !isSidebarClosed.value;
-    };
+    // // toggle 하나만 Vue Style로 바꿔보자.
+    // function isToggleSidebar() {
+    //   isSidebarClosed.value = !isSidebarClosed.value;
+    // };
 
-    function isDarkMode() {
-      isDark.value = !isDark.value;
+    // function isDarkMode() {
+    //   isDark.value = !isDark.value;
 
-    }
+    // }
     
-
-    // const body = document.querySelector('body'),
-    //   sidebar = body.querySelector('nav'),
-    //   toggle = body.querySelector(".toggle"),
-    //   searchBtn = body.querySelector(".search-box"),
-    //   modeSwitch = body.querySelector(".toggle-switch"),
-    //   modeText = body.querySelector(".mode-text");
-    
-    // toggle.addEventListener("click", () => {
-    //   sidebar.classList.toggle("close");
-    // })
-
-    // searchBtn.addEventListener("click", () => {
-    //   sidebar.classList.remove("close");
-    // })
-
-    // modeSwitch.addEventListener("click", () => {
-    //   body.classList.toggle("dark");
-    //   if (body.classList.contains("dark")) {
-    //     modeText.innerText = "Light mode";
-    //   } else {
-    //     modeText.innerText = "Dark mode";
-    //   }
-    // });
 </script>
 
 <template>
-  <div id="body" :class="{dark: isDark}">
-
-    <div class="box"></div>
+    <!-- <div class="box"></div> -->
     <nav :class= "{ sidebar: true, close: isSidebarClosed}">
       <header>
         <div class="image-text">
@@ -62,7 +43,8 @@
           </div>
         </div>
 
-        <i class='bx bx-chevron-right toggle' @click="isToggleSidebar" ></i>
+        <i class='bx bx-chevron-right toggle' @click="$emit('toggle-sidebar')"></i>
+        <!-- <i class='bx bx-chevron-right toggle' @click="isToggleSidebar" ></i> -->
       </header>
 
       <div class="menu-bar">
@@ -112,7 +94,7 @@
             <li class="nav-link">
               <a href="#">
                 <i class='bx bx-wallet icon'></i>
-                <span class="text nav-text">Coin-Topics</span>
+                <span class="text nav-text">Coins-Topics</span>
               </a>
             </li>
 
@@ -135,7 +117,8 @@
             
             <span class="mode-text text">{{ isDark ? 'Light mode' : 'Dark mode' }}</span>
 
-            <div class="toggle-switch" @click="isDarkMode">
+            <div class="toggle-switch" @click="$emit('toggle-dark')">
+            <!-- <div class="toggle-switch" @click="isDarkMode"> -->
               <span class="switch"></span>
             </div>
           </li>
@@ -145,10 +128,6 @@
 
     </nav>
 
-  <section class="home">
-    <div class="text">Dashboard Sidebar</div>
-  </section>
-  </div>
 </template>
 
 <style scoped>
