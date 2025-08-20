@@ -8,12 +8,14 @@
     const isSidebarClosed = ref(true);
     const isDark = ref(false);
 
-    function toggleSidebar() {
+    function toggleSidebar(payload) {
+      console.log(payload)
       isSidebarClosed.value = !isSidebarClosed.value;
       // 처음에  isSidebarClosed.value = !isSidebarClosed; 이렇게 돼서 다시 안닫힘. emit과 props 이벤트 전파 등
     }
 
-    function toggleDarkMode() {
+    function toggleDarkMode(payload) {
+      console.log(payload)
       isDark.value = !isDark.value;
     }
 

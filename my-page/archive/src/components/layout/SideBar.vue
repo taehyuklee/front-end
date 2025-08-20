@@ -8,24 +8,19 @@
       isDark: Boolean
     })
 
-    defineEmits(['toggle-sidebar','toggle-dark'])
+    // defineEmits를 해서 emit을 정의해야한다. template에 직접 반영하기 위해서는 $emit()으로 전달해야 한다.
+    const emit = defineEmits(['toggle-sidebar','toggle-dark'])
 
-    // const isSidebarClosed = ref(true);
-    // // dark모드는 꺼놓음
-    // const isDark = ref(false);
 
-    
+    function toggleSidebar() {
+      // emit할때 첫 번째 인자는 Custom Event명 , 두번째 인자부터는 data를 의미하게 됨.
+      emit('toggle-sidebar', 'change of sidebar')
+    }
 
-    // // toggle 하나만 Vue Style로 바꿔보자.
-    // function isToggleSidebar() {
-    //   isSidebarClosed.value = !isSidebarClosed.value;
-    // };
+    function toggleDark() {
+      emit('toggle-dark', 'change of dark')
+    }
 
-    // function isDarkMode() {
-    //   isDark.value = !isDark.value;
-
-    // }
-    
 </script>
 
 <template>
@@ -43,8 +38,8 @@
           </div>
         </div>
 
-        <i class='bx bx-chevron-right toggle' @click="$emit('toggle-sidebar')"></i>
-        <!-- <i class='bx bx-chevron-right toggle' @click="isToggleSidebar" ></i> -->
+        <!-- <i class='bx bx-chevron-right toggle' @click="$emit('toggle-sidebar')"></i> -->
+        <i class='bx bx-chevron-right toggle' @click="toggleSidebar" ></i>
       </header>
 
       <div class="menu-bar">
@@ -117,8 +112,8 @@
             
             <span class="mode-text text">{{ isDark ? 'Light mode' : 'Dark mode' }}</span>
 
-            <div class="toggle-switch" @click="$emit('toggle-dark')">
-            <!-- <div class="toggle-switch" @click="isDarkMode"> -->
+            <!-- <div class="toggle-switch" @click="$emit('toggle-dark')"> -->
+            <div class="toggle-switch" @click="toggleDark">
               <span class="switch"></span>
             </div>
           </li>
