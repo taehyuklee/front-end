@@ -17,7 +17,7 @@ const routes = [
   },
   {
     path: '/notification/',
-    name: 'notification',
+    name: 'Notification',
     // component: NotificationView
     component: () =>
       import(
@@ -26,7 +26,7 @@ const routes = [
   },
   {
     path: '/open_apis/',
-    name: 'OpenApis',
+    name: 'OpenAPIs',
     component: () =>
       import(
         /* webpackChunkName: "open_apis", webpackPrefetch:true */ '@/views/menu/OpenApis.vue'

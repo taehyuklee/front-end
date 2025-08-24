@@ -1,6 +1,7 @@
 <script setup>
 import Header from '@/components/layout/Header.vue'
 import { useRoute } from 'vue-router'
+import { computed } from 'vue' 
 
 defineProps({
   isSidebarClosed: Boolean
@@ -11,22 +12,29 @@ const route = useRoute()
 
 
 const headerConfig = {
-  'dashboard': {
+  'Home': {
+    'title': 'Home',
+    'subMenus': ['item1', 'item2', 'item3']
+  },
+  'Dashboard': {
     'title': 'Dashboard',
     'subMenus': ['item1', 'item2', 'item3']
   },
-  'open_apis': {
+  'OpenAPIs': {
     'title': 'OpenAPIs',
     'subMenus': ['item4', 'item5', 'item6']
   },
-  'notification': {
+  'Notification': {
     'title': 'Notification',
     'subMenus': ['item7', 'item8', 'item9']
   }
 
 }
 
-console.log(route.name)
+const currentHeader = computed( () => {
+  console.log(route.name);
+  return headerConfig[route.name] || {title: "", subMenus: []}
+})
 
 
 </script>
@@ -34,7 +42,7 @@ console.log(route.name)
 
 <template>
   <section class="home" :class="{ 'sidebar-closed': isSidebarClosed }">
-    <Header/>
+    <Header :title="currentHeader.title" :sub-menus="currentHeader.subMenus"/>
     <div class="text">
 
       <div class="container"> 

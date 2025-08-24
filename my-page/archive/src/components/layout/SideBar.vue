@@ -8,29 +8,29 @@
 
   const router = useRouter()
 
-    defineProps({
-      isSidebarClosed: Boolean,
-      isDark: Boolean
-    })
+  defineProps({
+    isSidebarClosed: Boolean,
+    isDark: Boolean
+  })
 
-    // defineEmits를 해서 emit을 정의해야한다. template에 직접 반영하기 위해서는 $emit()으로 전달해야 한다.
-    const emit = defineEmits(['toggle-sidebar','toggle-dark'])
+  // defineEmits를 해서 emit을 정의해야한다. template에 직접 반영하기 위해서는 $emit()으로 전달해야 한다.
+  const emit = defineEmits(['toggle-sidebar','toggle-dark'])
 
 
-    function toggleSidebar() {
-      // emit할때 첫 번째 인자는 Custom Event명 , 두번째 인자부터는 data를 의미하게 됨.
-      emit('toggle-sidebar', 'change of sidebar')
-    }
+  function toggleSidebar() {
+    // emit할때 첫 번째 인자는 Custom Event명 , 두번째 인자부터는 data를 의미하게 됨.
+    emit('toggle-sidebar', 'change of sidebar')
+  }
 
-    function toggleDark() {
-      emit('toggle-dark', 'change of dark')
-    }
+  function toggleDark() {
+    emit('toggle-dark', 'change of dark')
+  }
 
-    function goToMenu(path) {
-      // $router가 변경할 component 또는 View로 routing해준다. (path에 맞춰서) - router에 등록된 component로 path만을 가지고 이동.
-      // this.$router.push({ path: path }) options api 형태
-      router.push({ path: path })
-    }
+  function goToMenu(path) {
+    // $router가 변경할 component 또는 View로 routing해준다. (path에 맞춰서) - router에 등록된 component로 path만을 가지고 이동.
+    // this.$router.push({ path: path }) options api 형태
+    router.push({ path: path })
+  }
 
 </script>
 

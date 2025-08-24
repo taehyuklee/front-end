@@ -1,15 +1,29 @@
 <script setup>
 
+    defineProps({
+        title: {
+            type: String,   // 문자열
+            required: true
+        },
+        subMenus: {
+            type: Array,    // 배열
+            default: () => []  // 기본값 빈 배열
+        }
+    })
+
 
 </script>
 
 <template>
     <div>
         <nav id="header_nav">
-            <h3 id="header_title"> Notification </h3>
-            <!-- <div class="text">Notification</div> -->
+            <h3 id="header_title"> {{ title }} </h3>
             <ul id="nav_ul">
-                <li>
+
+                <li v-for="(submenu, index) in subMenus" :key="index">
+                    <a href="#">{{ submenu }}</a>
+                </li>
+                <!-- <li>
                     <a href="#"> 공지 사항 </a>
                 </li>
                 <li>
@@ -17,7 +31,7 @@
                 </li>
                 <li>
                     <a href="#"> 공지 사항2 </a>
-                </li>
+                </li> -->
             </ul>
         </nav>
     </div>
@@ -35,7 +49,7 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-#header_title {
+#title {
     font-size: 30px;
 }
 
