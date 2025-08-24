@@ -50,7 +50,7 @@
 }
 
 #title {
-    font-size: 30px;
+    font-size: 25px;
 }
 
 #nav_ul {
@@ -64,7 +64,7 @@
 
 #nav_ul li a {
     text-decoration: none; /* 밑줄 제거 */ 
-    font-size: 20px;
+    font-size: 15px;
     color: var(--header-text-color);
     padding: 0px 0px 0px, 0px;
     display: block;
