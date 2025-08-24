@@ -103,13 +103,14 @@
                 <span class="text nav-text">Coins-Topics</span>
               </a>
             </li>
+            <!--
             <li class="nav-link">
-              <a href="../../index.html">
-                <!-- icon이라 붙이면 해당 크기가 원상복구 됨. -->
+              <a href="../index.html">
+                icon이라 붙이면 해당 크기가 원상복구 됨.
                 <i class='bx  bx-chevrons-left icon'  ></i> 
                 <span class="text nav-text">Back To Main</span>
               </a>
-            </li>
+            </li>  -->
 
           </ul>
         </div>
