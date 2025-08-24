@@ -2,7 +2,7 @@
     //import HelloWorld from './components/HelloWorld.vue'
 
     import SideBar from '@/components/layout/SideBar.vue';
-    import HomeView from '@/views/HomeLayout.vue';
+    import HomeView from '@/views/HomeView.vue';
     import {ref} from 'vue' 
 
     const isSidebarClosed = ref(true);

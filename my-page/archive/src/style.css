@@ -13,6 +13,8 @@
   /* ===== Colors ===== */
   --body-color: #e4e9f7;
   --sidebar-color: #fff;
+  --header-color: #f6f5ff; /* custom - headers */
+  --header-text-color: #333;
   --primary-color: #695cfe;
   --primary-color-light: #f6f5ff;
   --toggle-color: #ddd;
@@ -39,6 +41,8 @@
 #body.dark {
   --body-color: #18191a;
   --sidebar-color: #242526;
+  --header-color: #1f1f20;
+  --header-text-color: #eee;
   --primary-color: #3a3b3c;
   --primary-color-light: #3a3b3c;
   --toggle-color: #fff;

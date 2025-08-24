@@ -1,11 +1,36 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeLayout.vue'
+import MainView from '../views/menu/MainView.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
-    component: HomeView
+    component: MainView
+  },
+  {
+    path: '/dashboard/',
+    name: 'Dashboard',
+    component: () =>
+      import(
+        /* webpackChunkName: "dashboard", webpackPrefetch:true */ '@/views/menu/Dashboard.vue'
+      )
+  },
+  {
+    path: '/notification/',
+    name: 'notification',
+    // component: NotificationView
+    component: () =>
+      import(
+        /* webpackChunkName: "notification", webpackPrefetch:true */ '@/views/menu/NotificationView.vue'
+      )
+  },
+  {
+    path: '/open_apis/',
+    name: 'OpenApis',
+    component: () =>
+      import(
+        /* webpackChunkName: "open_apis", webpackPrefetch:true */ '@/views/menu/OpenApis.vue'
+      )
   },
 ]
 

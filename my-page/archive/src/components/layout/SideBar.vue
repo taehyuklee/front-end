@@ -3,6 +3,11 @@
     // import {ref} from 'vue' //결론적으로 ref를 감싸야 vue에서 인식 가능 template에서
     // import '@/components/layout/style.css'
 
+  // vue-router는 메뉴를 클릭했을때 다른 menu로 가게 하기 위해 사용하는 객체임
+  import { useRouter } from 'vue-router'
+
+  const router = useRouter()
+
     defineProps({
       isSidebarClosed: Boolean,
       isDark: Boolean
@@ -21,6 +26,12 @@
       emit('toggle-dark', 'change of dark')
     }
 
+    function goToMenu(path) {
+      // $router가 변경할 component 또는 View로 routing해준다. (path에 맞춰서) - router에 등록된 component로 path만을 가지고 이동.
+      // this.$router.push({ path: path }) options api 형태
+      router.push({ path: path })
+    }
+
 </script>
 
 <template>
@@ -34,7 +45,7 @@
 
           <div class="text logo-text">
             <span class="name">Open APIs</span>
-            <span class="profession">for my service</span>
+            <span :class="{ profession: true, close: isSidebarClosed }">for my service</span>
           </div>
         </div>
 
@@ -52,39 +63,39 @@
 
           <ul class="menu-links">
             <li class="nav-link">
-              <a href="#">
+              <a href="#" @click.prevent="goToMenu('/home/')">
                 <i class='bx bx-home-alt icon'></i>
+                <span class="text nav-text">Home</span>
+              </a>
+            </li>
+
+            <li class="nav-link" @click.prevent="goToMenu('/dashboard/')">
+              <a href="#">
+                <i class='bx bx-bar-chart-alt-2 icon'></i>
                 <span class="text nav-text">Dashboard</span>
               </a>
             </li>
 
             <li class="nav-link">
-              <a href="#">
-                <i class='bx bx-bar-chart-alt-2 icon'></i>
-                <span class="text nav-text">Interestings</span>
-              </a>
-            </li>
-
-            <li class="nav-link">
-              <a href="#">
+              <a href="#" @click.prevent="goToMenu('/notification/')">
                 <i class='bx bx-bell icon'></i>
                 <span class="text nav-text">Notifications</span>
               </a>
             </li>
 
             <li class="nav-link">
-              <a href="#">
+              <a href="#" @click.prevent="goToMenu('/open_apis/')"> 
                 <i class='bx bx-pie-chart-alt icon'></i>
-                <span class="text nav-text">Analytics</span>
+                <span class="text nav-text">Oepn APIs</span>
               </a>
             </li>
-
+<!-- 
             <li class="nav-link">
               <a href="#">
                 <i class='bx bx-heart icon'></i>
                 <span class="text nav-text">Likes</span>
               </a>
-            </li>
+            </li> -->
 
             <li class="nav-link">
               <a href="#">
@@ -133,5 +144,18 @@
 </template>
 
 <style scoped>
+
+/* bootstrap css와의 충돌때문에 넣은 css */
+.menu ul {
+  margin: 0;       /* 브라우저 기본 margin 제거 */
+  padding: 0;      /* 브라우저 & Bootstrap padding 제거 */
+  list-style: none; /* 점 없애기 */
+}
+
+.profession.close {
+  visibility: hidden;   /* 공간은 유지하면서 안 보임 */
+}
+
+
 
 </style>
