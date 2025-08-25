@@ -6,6 +6,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [vue()],
   base: './',   // index.html 기준 상대경로 (github io에서 때문에)
+  // base: '/Archive/my-service/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

@@ -14,19 +14,19 @@ const route = useRoute()
 const headerConfig = {
   'MainHome': {
     'title': 'MainHome',
-    'subMenus': ['main_item1', 'main_item2', 'main_item3']
+    'subMenus': []
   },
   'Dashboard': {
     'title': 'Dashboard',
-    'subMenus': ['dashboard1', 'dashboard2', 'dashboard3']
+    'subMenus': ['Statistics', 'User Management', 'Logs']
   },
   'OpenAPIs': {
     'title': 'OpenAPIs',
-    'subMenus': ['open_apis1', 'open_apis2', 'open_apis3']
+    'subMenus': ['API List', 'Documentation', 'Requests']
   },
   'Notification': {
     'title': 'Notification',
-    'subMenus': ['notification1', 'notification2', 'notification3']
+    'subMenus': ['Messages', 'Events', 'Settings']
   }
 
 }

@@ -8,6 +8,10 @@
         subMenus: {
             type: Array,    // 배열
             default: () => []  // 기본값 빈 배열
+        },
+        isDark: {
+            type: Boolean,
+            required: true
         }
     })
 
@@ -68,6 +72,17 @@
     color: var(--header-text-color);
     padding: 0px 0px 0px, 0px;
     display: block;
+    text-shadow: 6px 4px 5px rgba(0,0,0,0.3); /* 그림자 적용 */
+    /* filter: drop-shadow(1.5px 1.5px 10px rgb(0, 42, 70)); */
+    transition: color 0.3s ease, 
+              text-shadow 0.3s ease; /* 색상과 그림자 부드럽게 변화 */
+}
+
+/* hover 시 색상 변경 */
+#nav_ul li a:hover {
+    color: rgb(255, 80, 80);
+    filter: drop-shadow(3px 3px 5px rgb(158, 158, 158));
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* 그림자 적용 */
 }
 
 </style>

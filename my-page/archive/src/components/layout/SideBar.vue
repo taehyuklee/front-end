@@ -69,17 +69,17 @@
               </a>
             </li>
 
-            <li class="nav-link" @click.prevent="goToMenu('/dashboard/')">
-              <a href="#">
-                <i class='bx bx-bar-chart-alt-2 icon'></i>
-                <span class="text nav-text">Dashboard</span>
-              </a>
-            </li>
-
             <li class="nav-link">
               <a href="#" @click.prevent="goToMenu('/notification/')">
                 <i class='bx bx-bell icon'></i>
                 <span class="text nav-text">Notifications</span>
+              </a>
+            </li>
+
+            <li class="nav-link" @click.prevent="goToMenu('/dashboard/')">
+              <a href="#">
+                <i class='bx bx-bar-chart-alt-2 icon'></i>
+                <span class="text nav-text">Dashboard</span>
               </a>
             </li>
 
@@ -97,20 +97,20 @@
               </a>
             </li> -->
 
-            <li class="nav-link">
+            <!-- <li class="nav-link">
               <a href="#">
                 <i class='bx bx-wallet icon'></i>
                 <span class="text nav-text">Coins-Topics</span>
               </a>
-            </li>
-            <!--
+            </li> -->
+            
             <li class="nav-link">
-              <a href="../index.html">
-                icon이라 붙이면 해당 크기가 원상복구 됨.
+              <a href="../index.html" target="_self">
+                <!-- icon이라 붙이면 해당 크기가 원상복구 됨. -->
                 <i class='bx  bx-chevrons-left icon'  ></i> 
                 <span class="text nav-text">Back To Main</span>
               </a>
-            </li>  -->
+            </li> 
 
           </ul>
         </div>
