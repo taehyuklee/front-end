@@ -188,6 +188,7 @@
       grid-template-rows: auto 1fr auto;
       gap: 12px;
       padding: 16px;
+      margin-top: 15px; /* 간격 살짝 주기 */
       margin-left: 20px; /* 이거 추가 */
       background: var(--surface);
       border-right: 1px solid var(--border);
