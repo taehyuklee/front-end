@@ -4,143 +4,142 @@
 
 
 <template>
-    <div class="openapi-app">
-        <aside aria-label="Open API Navigation">
-            <div class="brand" aria-label="Brand">
-            <span class="dot" aria-hidden="true"></span>
-            <span>OPEN API Catalog</span>
-            </div>
+    <div class="openapi_app">
+      <aside aria-label="Open API Navigation">
+        <div class="brand" aria-label="Brand">
+          <span class="dot" aria-hidden="true"></span>
+          <span>OPEN API Catalog</span>
+        </div>
 
-            <div class="search">
-            <input type="search" placeholder="Search endpoints… (UI only)" aria-label="Search endpoints" />
-            </div>
+        <div class="search">
+          <input type="search" placeholder="Search endpoints… (UI only)" aria-label="Search endpoints" />
+        </div>
 
-            <nav class="api-list" role="navigation" aria-label="API list">
-            <div class="section">
-                <h3>Authentication</h3>
-                <a class="item active" href="#auth-login">
-                <span class="method POST">POST</span>
-                <span class="label"><strong>/auth/login</strong> <span class="sub">사용자 로그인 토큰 발급</span></span>
-                </a>
-                <a class="item" href="#auth-refresh">
-                <span class="method POST">POST</span>
-                <span class="label"><strong>/auth/refresh</strong> <span class="sub">토큰 갱신</span></span>
-                </a>
-                <a class="item" href="#auth-revoke">
-                <span class="method DELETE">DELETE</span>
-                <span class="label"><strong>/auth/revoke</strong> <span class="sub">토큰 폐기</span></span>
-                </a>
-            </div>
+        <nav class="api-list" role="navigation" aria-label="API list">
+          <div class="section">
+            <h3>Authentication</h3>
+            <a class="item active" href="#auth-login">
+              <span class="method POST">POST</span>
+              <span class="label"><strong>/auth/login</strong> <span class="sub">사용자 로그인 토큰 발급</span></span>
+            </a>
+            <a class="item" href="#auth-refresh">
+              <span class="method POST">POST</span>
+              <span class="label"><strong>/auth/refresh</strong> <span class="sub">토큰 갱신</span></span>
+            </a>
+            <a class="item" href="#auth-revoke">
+              <span class="method DELETE">DELETE</span>
+              <span class="label"><strong>/auth/revoke</strong> <span class="sub">토큰 폐기</span></span>
+            </a>
+          </div>
 
-            <div class="section">
-                <h3>Users</h3>
-                <a class="item" href="#users-list">
-                <span class="method GET">GET</span>
-                <span class="label"><strong>/users</strong> <span class="sub">사용자 목록 조회 (paging)</span></span>
-                </a>
-                <a class="item" href="#users-detail">
-                <span class="method GET">GET</span>
-                <span class="label"><strong>/users/{id}</strong> <span class="sub">사용자 상세 조회</span></span>
-                </a>
-                <a class="item" href="#users-create">
-                <span class="method POST">POST</span>
-                <span class="label"><strong>/users</strong> <span class="sub">사용자 생성</span></span>
-                </a>
-                <a class="item" href="#users-update">
-                <span class="method PUT">PUT</span>
-                <span class="label"><strong>/users/{id}</strong> <span class="sub">사용자 수정</span></span>
-                </a>
-                <a class="item" href="#users-delete">
-                <span class="method DELETE">DELETE</span>
-                <span class="label"><strong>/users/{id}</strong> <span class="sub">사용자 삭제</span></span>
-                </a>
-            </div>
+          <div class="section">
+            <h3>Users</h3>
+            <a class="item" href="#users-list">
+              <span class="method GET">GET</span>
+              <span class="label"><strong>/users</strong> <span class="sub">사용자 목록 조회 (paging)</span></span>
+            </a>
+            <a class="item" href="#users-detail">
+              <span class="method GET">GET</span>
+              <span class="label"><strong>/users/{id}</strong> <span class="sub">사용자 상세 조회</span></span>
+            </a>
+            <a class="item" href="#users-create">
+              <span class="method POST">POST</span>
+              <span class="label"><strong>/users</strong> <span class="sub">사용자 생성</span></span>
+            </a>
+            <a class="item" href="#users-update">
+              <span class="method PUT">PUT</span>
+              <span class="label"><strong>/users/{id}</strong> <span class="sub">사용자 수정</span></span>
+            </a>
+            <a class="item" href="#users-delete">
+              <span class="method DELETE">DELETE</span>
+              <span class="label"><strong>/users/{id}</strong> <span class="sub">사용자 삭제</span></span>
+            </a>
+          </div>
 
-            <div class="section">
-                <h3>Products</h3>
-                <a class="item" href="#products-list">
-                <span class="method GET">GET</span>
-                <span class="label"><strong>/products</strong> <span class="sub">상품 목록</span></span>
-                </a>
-                <a class="item" href="#products-create">
-                <span class="method POST">POST</span>
-                <span class="label"><strong>/products</strong> <span class="sub">상품 등록</span></span>
-                </a>
-                <a class="item" href="#products-detail">
-                <span class="method GET">GET</span>
-                <span class="label"><strong>/products/{id}</strong> <span class="sub">상품 상세</span></span>
-                </a>
-                <a class="item" href="#products-update">
-                <span class="method PUT">PUT</span>
-                <span class="label"><strong>/products/{id}</strong> <span class="sub">상품 수정</span></span>
-                </a>
-                <a class="item" href="#products-delete">
-                <span class="method DELETE">DELETE</span>
-                <span class="label"><strong>/products/{id}</strong> <span class="sub">상품 삭제</span></span>
-                </a>
-            </div>
+          <div class="section">
+            <h3>Products</h3>
+            <a class="item" href="#products-list">
+              <span class="method GET">GET</span>
+              <span class="label"><strong>/products</strong> <span class="sub">상품 목록</span></span>
+            </a>
+            <a class="item" href="#products-create">
+              <span class="method POST">POST</span>
+              <span class="label"><strong>/products</strong> <span class="sub">상품 등록</span></span>
+            </a>
+            <a class="item" href="#products-detail">
+              <span class="method GET">GET</span>
+              <span class="label"><strong>/products/{id}</strong> <span class="sub">상품 상세</span></span>
+            </a>
+            <a class="item" href="#products-update">
+              <span class="method PUT">PUT</span>
+              <span class="label"><strong>/products/{id}</strong> <span class="sub">상품 수정</span></span>
+            </a>
+            <a class="item" href="#products-delete">
+              <span class="method DELETE">DELETE</span>
+              <span class="label"><strong>/products/{id}</strong> <span class="sub">상품 삭제</span></span>
+            </a>
+          </div>
 
-            <div class="section">
-                <h3>Orders</h3>
-                <a class="item" href="#orders-list">
-                <span class="method GET">GET</span>
-                <span class="label"><strong>/orders</strong> <span class="sub">주문 목록</span></span>
-                </a>
-                <a class="item" href="#orders-create">
-                <span class="method POST">POST</span>
-                <span class="label"><strong>/orders</strong> <span class="sub">주문 생성</span></span>
-                </a>
-                <a class="item" href="#orders-detail">
-                <span class="method GET">GET</span>
-                <span class="label"><strong>/orders/{id}</strong> <span class="sub">주문 상세</span></span>
-                </a>
-                <a class="item" href="#orders-cancel">
-                <span class="method DELETE">DELETE</span>
-                <span class="label"><strong>/orders/{id}</strong> <span class="sub">주문 취소</span></span>
-                </a>
-            </div>
+          <div class="section">
+            <h3>Orders</h3>
+            <a class="item" href="#orders-list">
+              <span class="method GET">GET</span>
+              <span class="label"><strong>/orders</strong> <span class="sub">주문 목록</span></span>
+            </a>
+            <a class="item" href="#orders-create">
+              <span class="method POST">POST</span>
+              <span class="label"><strong>/orders</strong> <span class="sub">주문 생성</span></span>
+            </a>
+            <a class="item" href="#orders-detail">
+              <span class="method GET">GET</span>
+              <span class="label"><strong>/orders/{id}</strong> <span class="sub">주문 상세</span></span>
+            </a>
+            <a class="item" href="#orders-cancel">
+              <span class="method DELETE">DELETE</span>
+              <span class="label"><strong>/orders/{id}</strong> <span class="sub">주문 취소</span></span>
+            </a>
+          </div>
 
-            <div class="section">
-                <h3>Admin</h3>
-                <a class="item" href="#admin-health">
-                <span class="method GET">GET</span>
-                <span class="label"><strong>/admin/health</strong> <span class="sub">상태 점검</span></span>
-                </a>
-                <a class="item" href="#admin-metrics">
-                <span class="method GET">GET</span>
-                <span class="label"><strong>/admin/metrics</strong> <span class="sub">메트릭 조회</span></span>
-                </a>
-            </div>
-            </nav>
+          <div class="section">
+            <h3>Admin</h3>
+            <a class="item" href="#admin-health">
+              <span class="method GET">GET</span>
+              <span class="label"><strong>/admin/health</strong> <span class="sub">상태 점검</span></span>
+            </a>
+            <a class="item" href="#admin-metrics">
+              <span class="method GET">GET</span>
+              <span class="label"><strong>/admin/metrics</strong> <span class="sub">메트릭 조회</span></span>
+            </a>
+          </div>
+        </nav>
 
-            <div class="footer">v1 · Open API Example</div>
-        </aside>
+        <div class="footer">v1 · Open API Example</div>
+      </aside>
 
-        <main>
-            <article id="auth-login" class="content-card">
+      <main>
+        <article id="auth-login" class="content-card">
             <h1>POST /auth/login</h1>
             <p class="path">Base URL: https://api.example.com</p>
             <p>사용자 로그인을 수행하고 JWT 토큰을 발급합니다. 좌측 목록은 많아져도 자체 스크롤이 생기며, 우측 본문은 독립적으로 스크롤됩니다.</p>
             <h3>Request Body</h3>
             <pre>{
-        "username": "string",
-        "password": "string"
-        }</pre>
-            <h3>Response</h3>
-            <pre>{
-        "accessToken": "...",
-        "refreshToken": "..."
-        }</pre>
-            </article>
-        </main>
+  "username": "string",
+  "password": "string"
+}</pre>
+        <h3>Response</h3>
+        <pre>{
+  "accessToken": "...",
+  "refreshToken": "..."
+}</pre>
+        </article>
+      </main>
     </div>
-
 </template>
 
 
 <style scoped>
  /* ---------- THEME ---------- */
- :root {
+    .openapi_app {
       --bg: #0b1220;
       --surface: #121a2b;
       --surface-2: #0f1626;
@@ -152,7 +151,7 @@
       --shadow: 0 10px 25px rgba(0,0,0,.35);
     }
     @media (prefers-color-scheme: light) {
-      :root {
+      .openapi_app {
         --bg: #f7f9fc;
         --surface: #ffffff;
         --surface-2: #f2f5fb;
@@ -166,8 +165,8 @@
     }
 
     /* ---------- LAYOUT ---------- */
-    html, body { height: 100%; }
-    body {
+    html, .openapi_app { height: 100%; }
+    .openapi_app {
       margin: 0;
       background: var(--bg);
       color: var(--text);
@@ -189,6 +188,7 @@
       grid-template-rows: auto 1fr auto;
       gap: 12px;
       padding: 16px;
+      margin-left: 20px; /* 이거 추가 */
       background: var(--surface);
       border-right: 1px solid var(--border);
     }
@@ -207,6 +207,7 @@
     }
     .search input {
       width: 100%;
+      box-sizing: border-box; /* padding, border 포함한 100% */
       padding: 10px 12px;
       border-radius: 10px;
       border: 1px solid var(--border);

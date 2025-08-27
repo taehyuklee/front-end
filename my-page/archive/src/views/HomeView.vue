@@ -45,7 +45,8 @@ const currentHeader = computed( () => {
     <Header :title="currentHeader.title" :sub-menus="currentHeader.subMenus"/>
     <div class="text">
 
-      <div class="container"> 
+      <!-- <div class="container">  -->
+      <div>
         <router-view/>
       </div>
       <!-- <QuillEditor theme="bubble" /> -->
@@ -56,4 +57,5 @@ const currentHeader = computed( () => {
 
 
 <style scoped>
+
 </style>

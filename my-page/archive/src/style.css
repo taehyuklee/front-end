@@ -11,7 +11,7 @@
 /* :root는 문서상에서 최상위 html tag를 의미한다. */
 :root {
   /* ===== Colors ===== */
-  --body-color: #e4e9f7;
+  --body-color: #e4e9f7;;
   --sidebar-color: #fff;
   --header-color: #f6f5ff; /* custom - headers */
   --header-text-color: #333;
@@ -297,12 +297,14 @@ header .image-text .profession {
   width: calc(100% - 250px);
   background-color: var(--body-color);
   transition: var(--tran-05);
+  overflow-y: auto; /* 스크롤 추가 */
 }
 .home .text {
   font-size: 30px;
   font-weight: 500;
   color: var(--text-color);
-  padding: 12px 60px;
+  padding: 0px 0px;
+  /* padding: 12px 60px; */ /* 원래 이거임 */
 }
 
 .sidebar.close ~ .home {

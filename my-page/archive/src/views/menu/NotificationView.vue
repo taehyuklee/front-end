@@ -10,12 +10,10 @@ console.log(route.name)
 
 <template>
 
-    <div>
-
-        <div id="notification_body">
+    <div id="notification_body">
+        <div class="text">
 
             <quill-editor></quill-editor>
-
 
         </div>
     </div>
@@ -23,5 +21,8 @@ console.log(route.name)
 </template>
 
 <style scoped>
-
+    .text {
+        padding: 12px 60px;
+    /* padding: 12px 60px; */ /* 원래 이거임 */
+    }
 </style>
