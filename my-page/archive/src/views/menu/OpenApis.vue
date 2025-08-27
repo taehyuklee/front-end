@@ -1,10 +1,14 @@
 <script setup>
 
+defineProps({
+  isDark: Boolean
+});
+
 </script>
 
 
 <template>
-    <div class="openapi_app">
+    <div :class="{ openapi_app: true, 'isDark': true }">
       <aside aria-label="Open API Navigation">
         <div class="brand" aria-label="Brand">
           <span class="dot" aria-hidden="true"></span>
@@ -12,7 +16,7 @@
         </div>
 
         <div class="search">
-          <input type="search" placeholder="Search endpoints… (UI only)" aria-label="Search endpoints" />
+          <input type="text" placeholder="Search endpoints…" />
         </div>
 
         <nav class="api-list" role="navigation" aria-label="API list">
@@ -164,6 +168,16 @@
       }
     }
 
+    .openapi_app.isDark {
+      --bg: var(--body-color);
+      --surface: var(--sidebar-color);
+      --surface-2: var(--header-color);
+      --text: var(--text-color);
+      --primary: var(--primary-color);
+      --accent: #34d399; /* 전역에는 없는 색 → 커스텀 유지 */
+      --border: var(--toggle-color); /* 예시 */
+    }
+
     /* ---------- LAYOUT ---------- */
     html, .openapi_app { height: 100%; }
     .openapi_app {
@@ -181,17 +195,19 @@
 
     /* ---------- SIDEBAR ---------- */
     aside {
-      position: sticky; /* stays in place while content scrolls */
+      position: sticky;
       top: 0;
-      height: 100dvh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
+      display: flex;               /* flex로 바꿔서 내부 요소 높이 컨트롤 */
+      flex-direction: column;      /* 세로로 쌓기 */
       gap: 12px;
       padding: 16px;
-      margin-top: 15px; /* 간격 살짝 주기 */
-      margin-left: 20px; /* 이거 추가 */
+      margin-top: 15px;
+      margin-left: 20px;
       background: var(--surface);
       border-right: 1px solid var(--border);
+      height: auto;                /* 내용만 차지하도록 */
+      min-height: 0;               /* flex 안에서 overflow 방지 */
+      overflow: visible;           /* input 아래 빈 공간 방지 */
     }
 
     .brand {
@@ -204,7 +220,9 @@
     }
 
     .search {
-      position: relative; margin: 2px 0 8px;
+      position: relative; 
+      margin: 2px 0 8px;
+      height: 43px;
     }
     .search input {
       width: 100%;
