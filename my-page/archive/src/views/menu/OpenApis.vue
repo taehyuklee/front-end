@@ -168,15 +168,15 @@ defineProps({
       }
     }
 
-    .openapi_app.isDark {
+    /* .openapi_app.isDark {
       --bg: var(--body-color);
       --surface: var(--sidebar-color);
       --surface-2: var(--header-color);
       --text: var(--text-color);
       --primary: var(--primary-color);
-      --accent: #34d399; /* 전역에는 없는 색 → 커스텀 유지 */
-      --border: var(--toggle-color); /* 예시 */
-    }
+      --accent: #34d399; 
+      --border: var(--toggle-color);
+    } */
 
     /* ---------- LAYOUT ---------- */
     html, .openapi_app { height: 100%; }
@@ -207,7 +207,8 @@ defineProps({
       border-right: 1px solid var(--border);
       height: auto;                /* 내용만 차지하도록 */
       min-height: 0;               /* flex 안에서 overflow 방지 */
-      overflow: visible;           /* input 아래 빈 공간 방지 */
+      height: 100dvh; /* 또는 100vh 내가 aside를 flex로 바꾸는 바람에 grid 상속을 받지 못함 */
+      overflow-y: auto;           /* input 아래 빈 공간 방지 */
     }
 
     .brand {
