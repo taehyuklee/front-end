@@ -30,7 +30,7 @@ const routes = [
     component: () =>
       import(
         /* webpackChunkName: "open_apis", webpackPrefetch:true */ '@/views/menu/OpenApis.vue'
-      )
+      ),
   },
 ]
 

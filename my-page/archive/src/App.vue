@@ -31,7 +31,10 @@
       @toggle-dark="toggleDarkMode"
       />
     <!-- </Sidebar> -->
-    <HomeView :is-sidebar-closed="isSidebarClosed"/>
+    <HomeView 
+      :is-sidebar-closed="isSidebarClosed"
+      :is-dark="isDark"
+      />
   </div>
 
 </template>

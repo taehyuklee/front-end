@@ -168,7 +168,7 @@ defineProps({
       }
     }
 
-    /* .openapi_app.isDark {
+    .openapi_app.isDark {
       --bg: var(--body-color);
       --surface: var(--sidebar-color);
       --surface-2: var(--header-color);
@@ -176,7 +176,7 @@ defineProps({
       --primary: var(--primary-color);
       --accent: #34d399; 
       --border: var(--toggle-color);
-    } */
+    }
 
     /* ---------- LAYOUT ---------- */
     html, .openapi_app { height: 100%; }
