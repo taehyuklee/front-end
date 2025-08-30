@@ -1,16 +1,18 @@
 <script setup>
+import { ref } from 'vue';
+// import UtilTable from '../../components/widgets/UtilTable.vue';
 
 </script>
 
 <template>
-
+    <div>
+        <!-- <util-table></util-table> -->
+    </div>
 
 </template>
 
-
 <style scoped>
-    .text {
-        padding: 12px 60px;
-    /* padding: 12px 60px; */ /* 원래 이거임 */
-    }
+.text {
+    padding: 12px 60px;
+}
 </style>

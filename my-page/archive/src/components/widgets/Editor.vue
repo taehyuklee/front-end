@@ -1,3 +1,4 @@
+<!-- quill- editor for vue3 -->
 <script setup>
 import {ref} from 'vue' 
 import { QuillEditor } from '@vueup/vue-quill'
@@ -13,7 +14,6 @@ const globalOptions = ref({
     readOnly: false,
     theme: 'snow'
 })
-
 
 
 </script>

@@ -1,0 +1,43 @@
+<!-- Vuetify Table -->
+
+<script setup>
+import { ref } from 'vue';
+
+defineProps({
+    items: {
+        type: [],   // 문자열
+        required: true
+    }
+})
+
+function onRowClick(event, row) {
+  console.log('Row clicked:', row.item) // Vuetify는 row.item에 데이터 들어있음
+  // 예: 라우터 이동
+  // router.push(`/detail/${row.item.name}`)
+}
+
+</script>
+
+<template>
+    <v-data-table
+        :items="items"
+        single-select
+        show-select
+        @click:row="onRowClick"
+        class="elevation-1"
+    />
+</template>
+
+<style scoped>
+.text {
+    padding: 12px 60px;
+}
+
+:deep(.v-data-table tbody tr) {
+    cursor: pointer;
+}
+
+:deep(.v-data-table tbody tr:hover) {
+    background-color: #f0f8ff;
+}
+</style>

@@ -14,7 +14,7 @@ const route = useRoute()
 const headerConfig = {
   'MainHome': {
     'title': 'MainHome',
-    'subMenus': []
+    'subMenus': ['Introduction']
   },
   'Dashboard': {
     'title': 'Dashboard',
@@ -40,7 +40,7 @@ const currentHeader = computed( () => {
 function getViewProps(name) {
   switch (name) {
     case 'MainHome':
-      return {}
+      return { isDark: props.isDark }
     case 'Dashboard':
       return {}
     case 'OpenAPIs':
