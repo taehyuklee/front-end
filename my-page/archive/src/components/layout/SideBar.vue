@@ -76,12 +76,12 @@
               </a>
             </li>
 
-            <li class="nav-link" @click.prevent="goToMenu('/dashboard/')">
+            <!-- <li class="nav-link" @click.prevent="goToMenu('/dashboard/')">
               <a href="#">
                 <i class='bx bx-bar-chart-alt-2 icon'></i>
                 <span class="text nav-text">Dashboard</span>
               </a>
-            </li>
+            </li> -->
 
             <li class="nav-link">
               <a href="#" @click.prevent="goToMenu('/open_apis/')"> 

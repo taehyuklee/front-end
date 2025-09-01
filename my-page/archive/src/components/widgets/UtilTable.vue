@@ -19,13 +19,15 @@ function onRowClick(event, row) {
 </script>
 
 <template>
-    <v-data-table
-        :items="items"
-        single-select
-        show-select
-        @click:row="onRowClick"
-        class="elevation-1"
-    />
+    <v-app class="app-auto">
+        <v-data-table
+            :items="items"
+            single-select
+            show-select
+            @click:row="onRowClick"
+            class="elevation-1"
+        />
+    </v-app>
 </template>
 
 <style scoped>
@@ -40,4 +42,13 @@ function onRowClick(event, row) {
 :deep(.v-data-table tbody tr:hover) {
     background-color: #f0f8ff;
 }
+
+.app-auto {
+    min-height: 0;          /* 화면 전체를 덮지 않음 */
+    background-color: #f5f5f5;
+    padding: 16px;
+    border-radius: 8px;
+    height: 100vh;
+}
+
 </style>

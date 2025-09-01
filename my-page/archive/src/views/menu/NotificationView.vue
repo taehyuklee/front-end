@@ -34,7 +34,7 @@ const items = [
             <!-- <data-grid></data-grid> -->
             <util-table
                 :items="items"></util-table>
-            <quill-editor></quill-editor>
+            <!-- <quill-editor></quill-editor> -->
 
         </div>
     </div>
