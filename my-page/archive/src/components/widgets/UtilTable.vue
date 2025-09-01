@@ -2,18 +2,25 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 defineProps({
     items: {
         type: [],   // 문자열
         required: true
+    },
+    headers: {
+        type: [],
+        required: true
     }
 })
 
 function onRowClick(event, row) {
-  console.log('Row clicked:', row.item) // Vuetify는 row.item에 데이터 들어있음
-  // 예: 라우터 이동
-  // router.push(`/detail/${row.item.name}`)
+    console.log('Row clicked:', row.item) // Vuetify는 row.item에 데이터 들어있음
+    // 예: 라우터 이동
+    router.push(`/detail/${row.item.id}`)
 }
 
 </script>
@@ -21,6 +28,7 @@ function onRowClick(event, row) {
 <template>
     <v-app class="app-auto">
         <v-data-table
+            :headers="headers"
             :items="items"
             single-select
             show-select

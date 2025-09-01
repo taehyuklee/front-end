@@ -8,18 +8,28 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 console.log(route.name)
 
-const items = [
+const headers = [
     {
-        name: 'African Elephant',
-        species: 'Loxodonta africana',
-        diet: 'Herbivore',
-        habitat: 'Savanna, Forests',
+        title: 'name',
+        key: 'name'
     },
     {
-        name: 'African Elephant',
-        species: 'Loxodonta africana',
-        diet: 'Herbivore',
-        habitat: 'Savanna, Forests',
+        title: 'description',
+        key: 'description',
+        // width: '800px'
+    }
+]
+
+const items = [
+    {
+        id: '1',
+        name: 'Data Analysis APIs',
+        description: 'New Open for my data analysis APIs',
+    },
+    {
+        id: '2',
+        name: 'etc APIs',
+        description: 'the way to get a token for APIs',
     },
 ]
 
@@ -33,6 +43,7 @@ const items = [
             <div>News</div>
             <!-- <data-grid></data-grid> -->
             <util-table
+                :headers="headers"
                 :items="items"></util-table>
             <!-- <quill-editor></quill-editor> -->
 
