@@ -2,7 +2,7 @@
 import QuillEditor from '@/components/widgets/Editor.vue'
 import DataGrid from '@/components/widgets/DataGrid.vue'
 import UtilTable from '@/components/widgets/UtilTable.vue'
-import './common.css'
+import './common_view.css'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -38,9 +38,9 @@ const items = [
 
 <template>
 
-    <div id="notification_body">
+    <div id="common_body">
         <div class="text">
-            <div>News</div>
+            <div class="view_title">News</div>
             <!-- <data-grid></data-grid> -->
             <util-table
                 :headers="headers"
@@ -57,4 +57,5 @@ const items = [
         padding: 12px 60px;
     /* padding: 12px 60px; */ /* 원래 이거임 */
     }
+
 </style>

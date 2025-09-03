@@ -1,6 +1,10 @@
-#notification_body {
+#common_body {
     font-size: 15px;
     margin-top: 35px;
     width: 100%;
     height: 100%;
 }
+
+.view_title{
+    margin-bottom: 20px;
+  }
