@@ -27,6 +27,10 @@ const headerConfig = {
   'Notification': {
     'title': 'Notification',
     'subMenus': ['Messages', 'Events', 'Settings']
+  },
+  'CoinDashboard': {
+    'title': 'Notification',
+    'subMenus': ['Chart Tools', 'Data Download']
   }
 
 }
@@ -44,6 +48,8 @@ function getViewProps(name) {
     case 'Dashboard':
       return {}
     case 'OpenAPIs':
+      return { isDark: props.isDark }
+    case 'CoinDashboard':
       return { isDark: props.isDark }
     default:
       return {}

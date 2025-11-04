@@ -103,6 +103,13 @@
                 <span class="text nav-text">Coins-Topics</span>
               </a>
             </li> -->
+
+            <li class="nav-link">
+              <a href="#" @click.prevent="goToMenu('/coin_dashboard/')"> 
+                <i class='bx bx-pie-chart-alt icon'></i>
+                <span class="text nav-text">Coin Dashboard</span>
+              </a>
+            </li>
             
             <li class="nav-link">
               <a href="../index.html" target="_self">
@@ -156,7 +163,5 @@
 .profession.close {
   visibility: hidden;   /* 공간은 유지하면서 안 보임 */
 }
-
-
 
 </style>

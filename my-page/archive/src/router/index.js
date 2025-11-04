@@ -32,6 +32,14 @@ const routes = [
         /* webpackChunkName: "open_apis", webpackPrefetch:true */ '@/views/menu/OpenApis.vue'
       ),
   },
+  {
+    path: '/coin_dashboard/',
+    name: 'CoinDashboard',
+    component: () =>
+      import(
+        /* webpackChunkName: "open_apis", webpackPrefetch:true */ '@/views/menu/CoinDashboardView.vue'
+      ),
+  },
 ]
 
 const router = createRouter({
