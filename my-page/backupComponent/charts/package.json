@@ -1,0 +1,15 @@
+{
+  "name": "charts",
+  "version": "1.0.0",
+  "main": "stock-candle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "echarts": "^6.0.0"
+  }
+}

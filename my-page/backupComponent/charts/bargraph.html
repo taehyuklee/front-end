@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ECharts Candle Local Data</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    #main { width: 100%; height: 640px; }
+  </style>
+</head>
+<body>
+
+<div id="main"></div>
+
+<script>
+const rawData = [
+  ["2015-01-05", 17832.99, 17731.92, 17713.01, 17923.23, 347300000],
+  ["2015-01-06", 17729.21, 17371.64, 17262.75, 17729.21, 476600000],
+  ["2015-01-07", 17378.08, 17584.52, 17378.08, 17630.11, 363800000],
+  ["2015-01-08", 17591.59, 17907.87, 17591.59, 17931.42, 424400000],
+  ["2015-01-09", 17898.84, 17737.37, 17697.11, 17925.43, 400600000],
+  ["2015-01-12", 17729.21, 17640.84, 17545.71, 17765.82, 350300000],
+  ["2015-01-13", 17635.74, 17613.68, 17554.79, 17780.51, 417400000],
+  ["2015-01-14", 17617.69, 17427.09, 17211.84, 17638.98, 500900000],
+  ["2015-01-15", 17440.48, 17320.71, 17244.75, 17500.84, 430700000],
+  ["2015-01-16", 17325.71, 17511.57, 17325.71, 17533.95, 397000000]
+];
+
+// ↑ 위가 CORS 없이 쓸 샘플 캔들 데이터입니다.
+
+const upColor = '#00da3c';
+const downColor = '#ec0000';
+
+function splitData(raw) {
+  const categoryData = [];
+  const values = [];
+  const volumes = [];
+  for (let i = 0; i < raw.length; i++) {
+    categoryData.push(raw[i][0]);
+    values.push([ raw[i][1], raw[i][2], raw[i][3], raw[i][4] ]);
+    volumes.push([ i, raw[i][5], raw[i][1] > raw[i][2] ? 1 : -1 ]);
+  }
+  return { categoryData, values, volumes };
+}
+
+function ma(dayCount, data) {
+  let result = [];
+  for (let i = 0; i < data.values.length; i++) {
+    if (i < dayCount) {
+      result.push('-');
+      continue;
+    }
+    let sum = 0;
+    for (let j = 0; j < dayCount; j++) {
+      sum += data.values[i - j][1];
+    }
+    result.push((sum / dayCount).toFixed(2));
+  }
+  return result;
+}
+
+const data = splitData(rawData);
+const chart = echarts.init(document.getElementById('main'));
+
+chart.setOption({
+  animation: false,
+  legend: { bottom: 10, data: ['DJI', 'MA5', 'MA10', 'MA20'] },
+  tooltip: { trigger: 'axis' },
+  xAxis: { type: 'category', data: data.categoryData },
+  yAxis: { scale: true },
+  grid: { left: '10%', right: '8%', height: '60%' },
+  dataZoom: [{ type: 'inside' }, { show: true }],
+  series: [
+    { name: 'DJI', type: 'candlestick', data: data.values },
+    { name: 'MA5', type: 'line', data: ma(5, data), smooth: true },
+    { name: 'MA10', type: 'line', data: ma(10, data), smooth: true },
+    { name: 'MA20', type: 'line', data: ma(20, data), smooth: true },
+    { name: 'Volume', type: 'bar', xAxisIndex: 0, yAxisIndex: 0, data: data.volumes }
+  ]
+});
+
+// ✅ 창 크기 바뀔 때 자동 resize
+window.addEventListener('resize', () => chart.resize());
+
+// ✅ div 크기 변해도 resize
+const ro = new ResizeObserver(() => chart.resize());
+ro.observe(document.getElementById('main'));
+</script>
+
+</body>
+</html>
