@@ -1,39 +1,39 @@
 <script setup>
     //import HelloWorld from './components/HelloWorld.vue'
-
     import SideBar from '@/components/layout/SideBar.vue';
     import HomeView from '@/views/HomeView.vue';
-    import {ref} from 'vue' 
+    import {ref, watch} from 'vue' 
+    import { useUiStore } from '@/stores/ui';
 
-    const isSidebarClosed = ref(true);
-    const isDark = ref(false);
+    const uiStore = useUiStore(); // 전역 상태 가져오기 
 
-    function toggleSidebar(payload) {
-      console.log(payload)
-      isSidebarClosed.value = !isSidebarClosed.value;
-      // 처음에  isSidebarClosed.value = !isSidebarClosed; 이렇게 돼서 다시 안닫힘. emit과 props 이벤트 전파 등
-    }
+    // const isSidebarClosed = ref(true);
+    // const isDark = ref(false);
 
-    function toggleDarkMode(payload) {
-      console.log(payload)
-      isDark.value = !isDark.value;
-    }
+    // function toggleSidebar(payload) {
+    //   console.log(payload)
+    //   isSidebarClosed.value = !isSidebarClosed.value;
+    //   // 처음에  isSidebarClosed.value = !isSidebarClosed; 이렇게 돼서 다시 안닫힘. emit과 props 이벤트 전파 등
+    // }
+
+    // function toggleDarkMode(payload) {
+    //   console.log(payload)
+    //   isDark.value = !isDark.value;
+    // }
 
 </script>
 
 <template>
 
-  <div id="body" :class="{dark: isDark}">
+  <div id="body" :class="{dark: uiStore.isDark}">
     <SideBar 
-      :is-dark="isDark"
-      :is-sidebar-closed="isSidebarClosed"
-      @toggle-sidebar="toggleSidebar"
-      @toggle-dark="toggleDarkMode"
+      @toggle-sidebar="uiStore.toggleSidebar"
+      @toggle-dark="uiStore.toggleDarkMode"
       />
     <!-- </Sidebar> -->
     <HomeView 
-      :is-sidebar-closed="isSidebarClosed"
-      :is-dark="isDark"
+      :is-sidebar-closed="uiStore.isSidebarClosed"
+      :is-dark="uiStore.isDark"
       />
   </div>
 

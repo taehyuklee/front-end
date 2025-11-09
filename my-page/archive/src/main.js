@@ -9,10 +9,15 @@ import VueGoodTablePlugin from 'vue-good-table-next';
 
 // import the styles
 import 'vue-good-table-next/dist/vue-good-table-next.css'
+import { createPinia } from 'pinia'
+
 
 const app  = createApp(App)
 app.use(router)
 app.use(VueGoodTablePlugin); //vue good table
 app.use(vuetify);
+
+const pinia = createPinia()
+app.use(pinia)   // ⚠️ 여기서 Pinia 등록 필수
 
 app.mount('#app')
