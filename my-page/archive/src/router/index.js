@@ -29,25 +29,60 @@ const routes = [
     name: 'OpenAPIs',
     component: () =>
       import(
-        /* webpackChunkName: "open_apis", webpackPrefetch:true */ '@/views/menu/OpenApis.vue'
+        /* webpackChunkName: "open_apis", webpackPrefetch:true */ '@/views/menu/OpenApiDetails/SampleOpenApi.vue'
       ),
   },
+  // {
+  //   path: '/coin_dashboard/',
+  //   name: 'CoinDashboard',
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "coin_dashboard", webpackPrefetch:true */ '@/views/menu/CoinDashboardView.vue'
+  //     ),
+  // },
+  // {
+  //   path: '/coin_dashboard/chart',
+  //   name: 'CoinChart',
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "coin_chart", webpackPrefetch:true */ '@/views/menu/CoinDashboardDetails/CoinToolsView.vue'
+  //     ),
+  // },
   {
-    path: '/coin_dashboard/',
+    path: '/coin_dashboard',
     name: 'CoinDashboard',
     component: () =>
       import(
         /* webpackChunkName: "coin_dashboard", webpackPrefetch:true */ '@/views/menu/CoinDashboardView.vue'
       ),
-  },
-  {
-    path: '/coin_dashboard/chart',
-    name: 'CoinChart',
-    component: () =>
-      import(
-        /* webpackChunkName: "coin_chart", webpackPrefetch:true */ '@/views/menu/CoinDashboardDetails/CoinToolsView.vue'
-      ),
-  },
+    children: [
+      {
+        path: 'chart', // ✅ 절대경로(/) 쓰지 않음
+        name: 'CoinStick',
+        component: () =>
+          import(
+            /* webpackChunkName: "coin_chart", webpackPrefetch:true */ '@/views/menu/CoinDashboardDetails/CoinTools/CandleStickView.vue'
+          ),
+      },
+      {
+        path: 'timeseries', 
+        name: 'CoinTimeseries',
+        component: () =>
+          import(
+            /* webpackChunkName: "coin_chart", webpackPrefetch:true */ '@/views/menu/CoinDashboardDetails/CoinTools/TimeseriesView.vue'
+          ),
+      },
+      {
+        path: 'data', // ✅ 추가 가능
+        name: 'CoinTimeSeries',
+        component: () =>
+          import(
+            /* webpackChunkName: "coin_timeseries", webpackPrefetch:true */ '@/views/menu/CoinDashboardDetails/CoinDataView.vue'
+          ),
+      },
+    ],
+  }
+
 
 ]
 
