@@ -58,6 +58,12 @@ function goToMenu(path) {
               <span class="text nav-text">Coin Dashboard</span>
             </a>
           </li>
+          <li class="nav-link">
+            <a href="../index.html" target="_self">
+              <i class='bx bx-chevrons-left icon'></i>
+              <span class="text nav-text">Back To Main</span>
+            </a>
+          </li>
         </ul>
       </div>
 
