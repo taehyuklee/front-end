@@ -28,9 +28,10 @@ function toggleHeader() {
 
 function goTo(submenu) {
     console.log(submenu)
-    // if (submenu.path) {
-    //     router.push(submenu.path)
-    // }
+    console.log(submenu.path)
+    if (submenu.path) {
+        router.push(submenu.path)
+    }
 }
 
 

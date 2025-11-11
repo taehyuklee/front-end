@@ -55,7 +55,7 @@ function goToMenu(path) {
             </a>
           </li>
           <li class="nav-link">
-            <a href="#" @click.prevent="goToMenu('/coin_dashboard/')">
+            <a href="#" @click.prevent="goToMenu('/coin_chart/')">
               <i class='bx bx-pie-chart-alt icon'></i>
               <span class="text nav-text">Coin Dashboard</span>
             </a>

@@ -17,51 +17,37 @@
   const route = useRoute()
 
   const headerConfig = {
-  MainHome: {
-    title: 'MainHome',
-    subMenus: [
-      { name: 'Introduction', path: '/' }
-    ]
-  },
-  Dashboard: {
-    title: 'Dashboard',
-    subMenus: [
-      { name: 'Statistics', path: '/dashboard/statistics' },
-      { name: 'User Management', path: '/dashboard/users' },
-      { name: 'Logs', path: '/dashboard/logs' }
-    ]
-  },
-  OpenAPIs: {
-    title: 'Open APIs',
-    subMenus: [
-      { name: 'API List', path: '/open_apis' },
-      { name: 'Documentation', path: '/open_apis/docs' },
-      { name: 'Requests', path: '/open_apis/requests' }
-    ]
-  },
-  Notification: {
-    title: 'Notification',
-    subMenus: [
-      { name: 'Messages', path: '/notification/messages' },
-      { name: 'Events', path: '/notification/events' },
-      { name: 'Settings', path: '/notification/settings' }
-    ]
-  },
-  CoinDashboard: {
-    title: 'Coin Dashboard',
-    subMenus: [
-      { name: 'Chart Tools', path: '/coin_dashboard/chart' },
-      { name: 'Data Download', path: '/coin_dashboard/download' }
-    ]
-  }
-}
-
-
-  const currentHeader = computed( () => {
-    console.log(route.name);
-      // 정규식: 'Coin'으로 시작하는 라우트 이름
-    if (/^Coin/.test(route.name)) {
-    return {
+    MainHome: {
+      title: 'MainHome',
+      subMenus: [
+        { name: 'Introduction', path: '/' }
+      ]
+    },
+    Dashboard: {
+      title: 'Dashboard',
+      subMenus: [
+        { name: 'Statistics', path: '/dashboard/statistics' },
+        { name: 'User Management', path: '/dashboard/users' },
+        { name: 'Logs', path: '/dashboard/logs' }
+      ]
+    },
+    OpenAPIs: {
+      title: 'Open APIs',
+      subMenus: [
+        { name: 'API List', path: '/open_apis' },
+        { name: 'Documentation', path: '/open_apis/docs' },
+        { name: 'Requests', path: '/open_apis/requests' }
+      ]
+    },
+    Notification: {
+      title: 'Notification',
+      subMenus: [
+        { name: 'Messages', path: '/notification/messages' },
+        { name: 'Events', path: '/notification/events' },
+        { name: 'Settings', path: '/notification/settings' }
+      ]
+    },
+    CoinDashboard: {
       title: 'Coin Dashboard',
       subMenus: [
         { name: 'Chart Tools', path: '/coin_dashboard/chart' },
@@ -69,6 +55,30 @@
       ]
     }
   }
+
+  
+  // 입구 역할을 하게 된다. 메뉴 다음 계층임
+  const currentHeader = computed( () => {
+    console.log(route.name);
+      // 정규식: 'Coin'으로 시작하는 라우트 이름
+    if (/^Coin/.test(route.name)) {
+      return {
+        title: 'Coin Dashboard',
+        subMenus: [
+          { name: 'Chart Tools', path: '/coin_chart/' },
+          { name: 'Data Download', path: '/coin_data/' }
+        ]
+      }
+    } else if(/^Open/.test(route.name)){
+      return {
+        title: 'Open APIs',
+        subMenus: [
+          { name: 'API List', path: '/open_apis' },
+          { name: 'Documentation', path: '/open_apis/docs' },
+          { name: 'Requests', path: '/open_apis/requests' }
+        ]
+      }
+    }
     return headerConfig[route.name] || {title: "", subMenus: []}
   })
 

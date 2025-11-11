@@ -32,33 +32,17 @@ const routes = [
         /* webpackChunkName: "open_apis", webpackPrefetch:true */ '@/views/menu/OpenApiDetails/SampleOpenApi.vue'
       ),
   },
-  // {
-  //   path: '/coin_dashboard/',
-  //   name: 'CoinDashboard',
-  //   component: () =>
-  //     import(
-  //       /* webpackChunkName: "coin_dashboard", webpackPrefetch:true */ '@/views/menu/CoinDashboardView.vue'
-  //     ),
-  // },
-  // {
-  //   path: '/coin_dashboard/chart',
-  //   name: 'CoinChart',
-  //   component: () =>
-  //     import(
-  //       /* webpackChunkName: "coin_chart", webpackPrefetch:true */ '@/views/menu/CoinDashboardDetails/CoinToolsView.vue'
-  //     ),
-  // },
   {
-    path: '/coin_dashboard',
-    name: 'CoinDashboard',
+    path: '/coin_chart',
+    name: 'CoinChart',
     component: () =>
       import(
         /* webpackChunkName: "coin_dashboard", webpackPrefetch:true */ '@/views/menu/CoinDashboardView.vue'
       ),
     children: [
       {
-        path: 'chart', // ✅ 절대경로(/) 쓰지 않음
-        name: 'CoinStick',
+        path: 'candle', // ✅ 절대경로(/) 쓰지 않음
+        name: 'CoinCandleStick',
         component: () =>
           import(
             /* webpackChunkName: "coin_chart", webpackPrefetch:true */ '@/views/menu/CoinDashboardDetails/CoinTools/CandleStickView.vue'
@@ -71,16 +55,26 @@ const routes = [
           import(
             /* webpackChunkName: "coin_chart", webpackPrefetch:true */ '@/views/menu/CoinDashboardDetails/CoinTools/TimeseriesView.vue'
           ),
-      },
-      {
-        path: 'data', // ✅ 추가 가능
-        name: 'CoinTimeSeries',
-        component: () =>
-          import(
-            /* webpackChunkName: "coin_timeseries", webpackPrefetch:true */ '@/views/menu/CoinDashboardDetails/CoinDataView.vue'
-          ),
-      },
+      }
     ],
+  },
+  {
+    path: '/coin_data',
+    name: 'CoinData',
+    component: () =>
+      import(
+        /* webpackChunkName: "coin_dashboard", webpackPrefetch:true */ '@/views/menu/CoinDashboardDetails/CoinDataView.vue'
+      ),
+      children: [
+        // {
+        //   path: 'data', // 절대경로(/) 쓰지 않음
+        //   name: 'CoinData',
+        //   component: () =>
+        //     import(
+        //       /* webpackChunkName: "coin_chart", webpackPrefetch:true */ '@/views/menu/CoinDashboardDetails/CoinDataView.vue'
+        //     ),
+        // }
+      ],
   }
 
 

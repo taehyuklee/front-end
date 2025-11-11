@@ -10,13 +10,13 @@
 
   const chartList = reactive([
     {
-      id: '/coin_dashboard/chart',
+      id: '/coin_chart/candle',
       name: 'Candle Chart',
       description: 'Candle Stick Chart',
       thumbnail: new URL('@/assets/candle-stick.png', import.meta.url).href, // 이미지 경로 넣어도 됨
     },
     {
-      id: '/coin_dashboard/timeseries',
+      id: '/coin_chart/timeseries',
       name: 'Time Series',
       description: 'Time Series Chart',
       thumbnail: new URL('@/assets/timeseries.png', import.meta.url).href, // 이미지 경로
@@ -39,7 +39,7 @@
 
     if (currentPath === chartId) {
       // 이미 해당 경로일 경우 → 부모로 돌아감
-      router.push('/coin_dashboard')
+      router.push('/coin_chart')
       selectedChartId.value = null
     } else {
       // 다른 경로일 경우 → 해당 자식 뷰로 이동
