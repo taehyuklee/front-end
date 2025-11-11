@@ -1,6 +1,8 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { useUiStore } from '@/stores/ui'
+import 'boxicons/css/boxicons.min.css'
+
 
 const router = useRouter()
 const uiStore = useUiStore() // store 사용
