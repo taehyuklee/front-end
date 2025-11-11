@@ -1,6 +1,9 @@
 <script setup>
 
 import {ref} from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const isHeaderOpen = ref(true);
 
@@ -23,6 +26,13 @@ function toggleHeader() {
     isHeaderOpen.value = !isHeaderOpen.value;
 }
 
+function goTo(submenu) {
+    console.log(submenu)
+    // if (submenu.path) {
+    //     router.push(submenu.path)
+    // }
+}
+
 
 </script>
 
@@ -37,7 +47,7 @@ function toggleHeader() {
             </div>
             <ul id="nav_ul" :class="{ close: !isHeaderOpen }">
                 <li v-for="(submenu, index) in subMenus" :key="index">
-                    <a href="#">{{ submenu }}</a>
+                    <a href="#" @click.prevent="goTo(submenu)">{{ submenu.name }}</a>
                 </li>
             </ul>
         </nav>
