@@ -50,13 +50,13 @@ function goToMenu(path) {
           </li>
           <li class="nav-link">
             <a href="#" @click.prevent="goToMenu('/open_apis/')">
-              <i class='bx bx-pie-chart-alt icon'></i>
+              <i class='bx bx-extension icon'></i>
               <span class="text nav-text">Open APIs</span>
             </a>
           </li>
           <li class="nav-link">
             <a href="#" @click.prevent="goToMenu('/coin_chart/')">
-              <i class='bx bx-pie-chart-alt icon'></i>
+              <i class='bx bx-bar-chart-alt-2 icon'></i>
               <span class="text nav-text">Coin Dashboard</span>
             </a>
           </li>

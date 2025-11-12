@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useUiStore = defineStore('ui', () => {
-    const isSidebarClosed = ref(true)
+    const isSidebarClosed = ref(false)
     const isDark = ref(false)
 
     function toggleSidebar() {

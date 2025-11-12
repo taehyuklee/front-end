@@ -1,6 +1,9 @@
 <script setup>
   import { reactive, ref , computed} from 'vue'
   import { useRouter } from 'vue-router'
+  import { useUiStore } from '@/stores/ui';
+
+  const uiStore = useUiStore(); // 전역 상태 가져오기 
 
   const router = useRouter()
 
@@ -55,8 +58,8 @@
     <div class="text">
       <div class="view_title">Chart Tools</div>
 
-      <div class="cards">
-        <div class="card" :key="chart.id" v-for="chart in visibleCharts">
+      <div :class="{ cards: true, isDark: uiStore.isDark}">
+        <div :class="{card: true, isDark: uiStore.isDark}" :key="chart.id" v-for="chart in visibleCharts">
           <div @click="selectChart(chart.id)" :class="{thumbnail: true, isActive: selectedChartId }">
             <!-- <p>{{ chart.thumbnail ? '' : chart.name }}</p> -->
             <!-- 이미지가 있으면 표시, 없으면 대체 텍스트 -->
@@ -108,12 +111,25 @@
       grid-auto-flow: row;
       justify-content: start; /* 왼쪽 정렬 */
       grid-gap: 25px; 
+      transition: background-color 0.3s ease;
+  }
+
+  .cards.isDark {
+    background-color: #18191a;
+    transition: background-color 0.3s ease;
   }
 
   .card {
     background-color: white;
     box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.25); /* 그림자 조금 더 강조 */
     border-radius: 6px; 
+  }
+
+  .card.isDark {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.05);
   }
 
   /* .thumbnail {
