@@ -42,12 +42,12 @@ function goToMenu(path) {
               <span class="text nav-text">Home</span>
             </a>
           </li>
-          <li class="nav-link">
+          <!-- <li class="nav-link">
             <a href="#" @click.prevent="goToMenu('/notification/')">
               <i class='bx bx-bell icon'></i>
               <span class="text nav-text">Notifications</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-link">
             <a href="#" @click.prevent="goToMenu('/open_apis/')">
               <i class='bx bx-extension icon'></i>
