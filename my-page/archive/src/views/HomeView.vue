@@ -66,6 +66,7 @@
         title: 'Coin Dashboard',
         subMenus: [
           { name: 'Chart Tools', path: '/coin_chart/' },
+          { name: 'Statistical Analysis', path: '/coin_ans/' },
           { name: 'Data Download', path: '/coin_data/' }
         ]
       }

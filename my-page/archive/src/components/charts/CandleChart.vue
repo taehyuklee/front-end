@@ -1,4 +1,5 @@
 <template>
+    <!-- <div class="coin_title"> {{ coinTitle }}</div> -->
     <div id="main" ref="chartRef" class="w-full h-[100vh]"></div>
 </template>
 
@@ -9,17 +10,21 @@
 
     const chartRef = ref(null)
     let chartInstance = null
+
     const uiStore = useUiStore() // store 사용
 
     const upColor = '#00da3c'
     const downColor = '#ec0000'
 
     const props = defineProps({
-        rawData: Array
+        rawData: Array,
+        coinTitle: String
     })
 
     // 날짜, open, close, low, high, volume
+    // const rawData = props.rawData ? props.rawData : []
     const rawData = props.rawData
+    const coinTitle = ref(props.coinTitle ? props.coinTitle : '')
 
     function splitData(rawData) {
         const categoryData = []
@@ -119,6 +124,31 @@
             ]
         }
 
+        watch(
+            () => props.rawData,
+            (newData) => {
+                if (!chartInstance) return
+                const data = splitData(newData)
+
+                chartInstance.setOption({
+                xAxis: [
+                    { data: data.categoryData },
+                    { data: data.categoryData }
+                ],
+                series: [
+                    { data: data.values },
+                    { data: calculateMA(5, data) },
+                    { data: calculateMA(10, data) },
+                    { data: calculateMA(20, data) },
+                    { data: calculateMA(30, data) },
+                    { data: data.volumes }
+                ]
+                })
+            },
+            { deep: true }
+            )
+
+
         chartInstance.setOption(option)
 
         // 반응형 처리
@@ -179,5 +209,9 @@
     #main {
         width: 100%;
         height: 100vh;
+    }
+
+    .coin_title{
+        font-size: 30px;
     }
 </style>
