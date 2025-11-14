@@ -12,13 +12,18 @@ import VueGoodTablePlugin from 'vue-good-table-next';
 import 'vue-good-table-next/dist/vue-good-table-next.css'
 import { createPinia } from 'pinia'
 
+// DataPicker  (https://vue3datepicker.com/installation/꺼 사용)
+import { VueDatePicker } from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
 
 const app  = createApp(App)
 app.use(router)
 app.use(VueGoodTablePlugin); //vue good table
 app.use(vuetify);
+app.component('VueDatePicker', VueDatePicker);
 
+// 여기서 Pinia 등록
 const pinia = createPinia()
-app.use(pinia)   // ⚠️ 여기서 Pinia 등록 필수
+app.use(pinia)  
 
 app.mount('#app')

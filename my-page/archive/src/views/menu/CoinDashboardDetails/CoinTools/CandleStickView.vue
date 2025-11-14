@@ -7,6 +7,11 @@
         
     // 날짜, open, close, low, high, volume
     let rawData = ref([ ]);
+    const dates = ref();
+
+    function getDates() {
+        console.log(dates)
+    }
 
     function selectCoin(coinNm) {
         console.log(coinNm)
@@ -85,7 +90,7 @@
             ];
         }
 
-        // ✅ reactive 배열의 내부만 교체 (reactivity 유지)
+        // reactive 배열의 내부만 교체 (reactivity 유지)
         rawData.value = newData
     }
 
@@ -93,26 +98,38 @@
 
 <template>
     <div id="common_body">
-    <div class="text">
-        <div class="view_title">Candle Chart</div>
+        <div class="text">
+            <div class="view_title">Candle Chart</div>
 
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ coinTitle }}
-            </button>
-            <ul class="dropdown-menu">
-                <li :key="coin.id" v-for="coin in coinList">
-                    <a class="dropdown-item" @click="selectCoin(coin.coinNm)"> {{ coin.coinNm }} </a>
-                </li>
-            </ul>
+
+            <div class="select-section">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ coinTitle }}
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li :key="coin.id" v-for="coin in coinList">
+                            <a class="dropdown-item" @click="selectCoin(coin.coinNm)"> {{ coin.coinNm }} </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <VueDatePicker v-model="dates" 
+                    @update:model-value="getDates" 
+                    range 
+                    class="date-picker"
+                />
+            </div>
+            
+            <div class="chart-view">
+
+                <CandleChart
+                    :raw-data="rawData"
+                    :coin-title="coinTitle"
+                />
+            </div>
+            
         </div>
-        
-        <CandleChart
-            :raw-data="rawData"
-            :coin-title="coinTitle"
-        />
-        
-    </div>
     </div>
 </template>
 
@@ -127,10 +144,48 @@
         padding-bottom: 25px;
     }
 
-    .btn.btn-secondary.dropdown-toggle {
-        color: #fff;
-        
+    .dropdown {
+        display: flex;
+        align-items: center; 
     }
+
+    .select-section {
+        display: flex;
+        gap: 20px; 
+        align-items: center; 
+        padding: 12px 16px;
+        background-color: #f5f6fa;  /* 부드러운 배경 */
+        border-radius: 12px;         /* 둥글게 */
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        margin-bottom: 20px;         /* 아래 콘텐츠와 간격 */
+    }
+
+    .btn.btn-secondary.dropdown-toggle {
+        height: 38px;
+        display: flex;
+        align-items: center;
+        border-radius: 1rem;
+    }
+    
+    .date-picker {
+        max-width: 350px; 
+        font-size: 12px;
+    }
+
+    /* DatePicker input wrapper + input 둥글게 */
+    .date-picker .dp__input_wrap,
+    .date-picker .dp__input {
+        border-radius: 1rem;
+        border: 1px solid #ced4da;
+        padding: 0 12px;
+        height: 38px;
+        box-sizing: border-box;
+    }
+
+    .btn.btn-secondary.dropdown-toggle {
+        color: #fff;  
+    }
+    
 
     .dropdown-menu {
         opacity: 0;
@@ -145,5 +200,13 @@
         /* transform: translateY(0); */
         visibility: visible;
 
+    }
+
+    .chart-view {
+        background-color: #f8f9fc;  /* 살짝 다른 부드러운 배경 */
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        margin-top: 20px;
     }
 </style>
