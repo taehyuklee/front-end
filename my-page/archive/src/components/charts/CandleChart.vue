@@ -1,5 +1,5 @@
 <template>
-    <!-- <div class="coin_title"> {{ coinTitle }}</div> -->
+    <div class="coin_title"> {{ coinTitle }}</div>
     <div id="main" ref="chartRef" class="w-full h-[100vh]"></div>
 </template>
 
@@ -63,7 +63,7 @@
             legend: {
                 bottom: 10,
                 left: 'center',
-                data: ['DJI', 'MA5', 'MA10', 'MA20', 'MA30']
+                data: ['', 'MA5', 'MA10', 'MA20', 'MA30']
             },
             tooltip: {
                 trigger: 'axis',
@@ -115,7 +115,7 @@
                 { show: true, xAxisIndex: [0, 1], type: 'slider', top: '85%', start: 70, end: 100 }
             ],
             series: [
-                { name: 'DJI', type: 'candlestick', data: data.values },
+                { name: coinTitle.value, type: 'candlestick', data: data.values },
                 { name: 'MA5',  type: 'line', data: calculateMA(5, data),  smooth: true },
                 { name: 'MA10', type: 'line', data: calculateMA(10, data), smooth: true },
                 { name: 'MA20', type: 'line', data: calculateMA(20, data), smooth: true },
@@ -146,7 +146,28 @@
                 })
             },
             { deep: true }
-            )
+        )
+
+        // 외부에서 바껴도 내부에서 이미 Mount된 데이터를 다시 세팅 안해주면 안바뀜
+        watch(
+            () => props.coinTitle,
+            (newTitle) => {
+                if (!chartInstance) return;
+
+                // ref 값 업데이트
+                coinTitle.value = newTitle;
+
+                // chart series 이름과 legend 업데이트
+                chartInstance.setOption({
+                    series: [
+                        { name: newTitle }  // 0번 series만 이름 변경
+                    ],
+                    legend: {
+                        data: [newTitle, 'MA5', 'MA10', 'MA20', 'MA30'] // legend도 같이 변경
+                    }
+                });
+            }
+        );
 
 
         chartInstance.setOption(option)

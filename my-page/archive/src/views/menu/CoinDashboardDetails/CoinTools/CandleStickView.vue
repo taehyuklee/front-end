@@ -9,8 +9,10 @@
     let rawData = ref([ ]);
     const dates = ref();
 
-    function getDates() {
-        console.log(dates)
+    function getDates(e) {
+        // event 확인하기 위함.
+        // console.log(dates)
+        console.log(e)
     }
 
     function selectCoin(coinNm) {
@@ -114,8 +116,10 @@
                     </ul>
                 </div>
 
-                <VueDatePicker v-model="dates" 
-                    @update:model-value="getDates" 
+                <!-- datapicker 내부적으로 model-value 라는 값으로 emit하나봄-->
+                <VueDatePicker 
+                    v-model="dates" 
+                    @update:model-value="getDates"
                     range 
                     class="date-picker"
                 />
