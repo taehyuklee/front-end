@@ -27,7 +27,6 @@
     // const rawData = props.rawData ? props.rawData : []
     const rawData = props.rawData
     const coinTitle = ref(props.coinTitle ? props.coinTitle : '')
-    const selectedDate = ref(props.selectedDate ? props.selectedDate: [])
 
     function splitData(rawData) {
         const categoryData = []

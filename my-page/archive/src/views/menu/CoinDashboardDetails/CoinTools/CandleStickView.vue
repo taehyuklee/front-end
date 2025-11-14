@@ -3,12 +3,13 @@
     import CandleChart from '@/components/charts/CandleChart.vue';
 
     const coinList = reactive([{coinNm: 'XLM'}, {coinNm: 'XRP'}, {coinNm: 'BTC'}])
-    const coinTitle = ref('Coin List')
+    const coinTitle = ref('Select Coin')
         
     // 날짜, open, close, low, high, volume
     let rawData = ref([ ]);
     let dates = ref();
     let selectedDates = ref();
+
 
     function getDates(e) {
         // event 확인하기 위함.
@@ -29,6 +30,8 @@
         // console.log(selectedDates.value)
         
     }
+
+    
 
     function selectCoin(coinNm) {
         console.log(coinNm)
@@ -138,6 +141,8 @@
                     range 
                     class="date-picker"
                 />
+
+                <!-- <button class="btn btn-success" @click="addChart"> + </button> -->
             </div>
             
             <div class="chart-view">

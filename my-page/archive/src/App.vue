@@ -1,9 +1,8 @@
 <script setup>
     //import HelloWorld from './components/HelloWorld.vue'
     import SideBar from '@/components/layout/SideBar.vue';
-    import HomeView from '@/views/HomeView.vue';
-    import {ref, watch} from 'vue' 
     import { useUiStore } from '@/stores/ui';
+    import HomeView from '@/views/HomeView.vue';
 
     const uiStore = useUiStore(); // 전역 상태 가져오기 
 

@@ -2,6 +2,9 @@
 
 import {ref} from 'vue'
 import { useRouter } from 'vue-router'
+import { useUiStore } from '@/stores/ui';
+
+const uiStore = useUiStore(); // 전역 상태 가져오기 
 
 const router = useRouter()
 
@@ -15,10 +18,6 @@ defineProps({
     subMenus: {
         type: Array,    // 배열
         default: () => []  // 기본값 빈 배열
-    },
-    isDark: {
-        type: Boolean,
-        required: true
     }
 })
 
