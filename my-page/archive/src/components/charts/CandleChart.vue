@@ -4,6 +4,7 @@
 </template>
 
 <script setup>
+
     import { ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
     import { useUiStore } from '@/stores/ui'
     import * as echarts from 'echarts'
@@ -18,13 +19,15 @@
 
     const props = defineProps({
         rawData: Array,
-        coinTitle: String
+        coinTitle: String,
+        selectedDate: Array
     })
 
     // 날짜, open, close, low, high, volume
     // const rawData = props.rawData ? props.rawData : []
     const rawData = props.rawData
     const coinTitle = ref(props.coinTitle ? props.coinTitle : '')
+    const selectedDate = ref(props.selectedDate ? props.selectedDate: [])
 
     function splitData(rawData) {
         const categoryData = []
@@ -169,6 +172,36 @@
             }
         );
 
+        watch(
+            () => props.selectedDate,
+            (newDate) => {
+                if (!chartInstance || !newDate?.length) return;
+
+                // Date → "YYYY-MM-DD" 형식으로 변환
+                const start = newDate[0] instanceof Date ? newDate[0].toISOString().slice(0,10) : newDate[0];
+                const end = newDate[1] instanceof Date ? newDate[1].toISOString().slice(0,10) : newDate[1];
+
+                chartInstance.setOption({
+                dataZoom: [
+                    {
+                        type: 'inside',
+                        xAxisIndex: [0, 1],
+                        startValue: start,
+                        endValue: end
+                    },
+                    {
+                        show: true,
+                        xAxisIndex: [0, 1],
+                        type: 'slider',
+                        top: '85%',
+                        startValue: start,
+                        endValue: end
+                    }
+                ]
+                });
+            }
+        )
+
 
         chartInstance.setOption(option)
 
@@ -186,7 +219,7 @@
         window.addEventListener('resize', resizeHandler)
 
         
-        // ✅ 사이드바 상태(true/false) 감지
+        // 사이드바 상태(true/false) 감지
         // watch(
         // () => props.isSidebarClosed,
         // async () => {

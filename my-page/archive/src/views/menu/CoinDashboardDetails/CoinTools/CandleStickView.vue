@@ -7,12 +7,27 @@
         
     // 날짜, open, close, low, high, volume
     let rawData = ref([ ]);
-    const dates = ref();
+    let dates = ref();
+    let selectedDates = ref();
 
     function getDates(e) {
         // event 확인하기 위함.
-        // console.log(dates)
-        console.log(e)
+        // console.log(dates) 왜 dates와 e가 같을까 @update:model-value="getDates" 라고 했을때
+        // 자식 컴포넌트에서 emit("update:modelValue", e.target.value) 이렇게 event가 전달된다 부모한테 그리고 해당 data는 e임을 알아야함.
+        // 어쨌든 이미 v-model로 양방향 바인딩 되어 있고 dates가 변경되면, 새로운 값을 이벤트로 보내주고 있고 그게 e임.
+        // console.log(e[0])
+        // console.log(dates.value[0])
+        // console.log(dates.value[1])
+        if (!dates.value?.length) return;
+
+        // const start = dates.value[0].toISOString().slice(0, 10)
+        // const end = dates.value[1].toISOString().slice(0, 10)
+
+        selectedDates.value = [dates.value[0], dates.value[1]]
+        console.log(selectedDates.value)
+        // selectedDates.value = [dates.value[0], dates.value[1]]
+        // console.log(selectedDates.value)
+        
     }
 
     function selectCoin(coinNm) {
@@ -130,6 +145,7 @@
                 <CandleChart
                     :raw-data="rawData"
                     :coin-title="coinTitle"
+                    :selected-date="selectedDates"
                 />
             </div>
             
