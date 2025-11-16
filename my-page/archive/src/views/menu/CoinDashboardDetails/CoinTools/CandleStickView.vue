@@ -1,14 +1,32 @@
 <script setup>
-    import { reactive, ref } from 'vue'
+    import { onMounted, reactive, ref, computed } from 'vue'
     import CandleChart from '@/components/charts/CandleChart.vue';
+    import { get_apis_await } from '@/api/axios.js'
 
-    const coinList = reactive([{coinNm: 'XLM'}, {coinNm: 'XRP'}, {coinNm: 'BTC'}])
+    // const coinList = ref([{market: 'KRW-XLM'}, {market: 'KRW-XRP'}, {market: 'KRW-BTC'}])
+    const coinList = ref([])
     const coinTitle = ref('Select Coin')
         
     // 날짜, open, close, low, high, volume
     let rawData = ref([ ]);
     let dates = ref();
     let selectedDates = ref();
+    const searchText = ref("")
+
+    const filteredCoinList = computed(() => {
+        if (!searchText.value) return coinList.value
+        return coinList.value.filter(c =>
+            // Include를 해서 %Like query처럼 구현
+            c.market.toLowerCase().includes(searchText.value.toLowerCase())
+        )
+    })
+
+    onMounted(async () => {
+        // console.log(get_apis_await())
+        const newData = await get_apis_await()
+        console.log(newData.data)
+        coinList.value = newData.data
+    }) 
 
 
     function getDates(e) {
@@ -38,7 +56,7 @@
         coinTitle.value = coinNm
 
         let newData = []
-        if(coinNm === 'XLM') {
+        if(coinNm === 'KRW-XLM') {
             newData = [
                 ["2025-11-01", 100.5, 102.3, 99.8, 103.0, 500000],
                 ["2025-11-02", 102.3, 101.5, 100.2, 103.5, 450000],
@@ -51,7 +69,7 @@
                 ["2025-11-09", 106.8, 108.2, 106.5, 108.5, 620000],
                 ["2025-11-10", 108.2, 109.0, 107.5, 109.5, 640000]
             ];
-        } else if (coinNm === 'XRP') {
+        } else if (coinNm === 'KRW-XRP') {
             newData = [
                 ["2015-01-02", 17823.07, 17832.99, 17731.92, 17923.23, 347300000],
                 ["2015-01-05", 17832.99, 17731.92, 17600.01, 17923.23, 347300000],
@@ -128,9 +146,27 @@
                         {{ coinTitle }}
                     </button>
                     <ul class="dropdown-menu">
-                        <li :key="coin.id" v-for="coin in coinList">
-                            <a class="dropdown-item" @click="selectCoin(coin.coinNm)"> {{ coin.coinNm }} </a>
-                        </li>
+
+                        <!-- 고정 Search Box -->
+                        <div class="dropdown-search-box p-2">
+                            <li class="px-2 py-1">
+                                <input 
+                                    type="text" 
+                                    class="form-control search-input"
+                                    v-model="searchText"
+                                    placeholder="Search coin..."
+                                />
+                            </li>
+
+                            <li><hr class="dropdown-divider" /></li>
+                        </div>
+
+                        <!-- 스크롤 리스트 -->
+                        <div class="dropdown-scroll-list">
+                            <li :key="coin.id" v-for="coin in filteredCoinList">
+                                <a class="dropdown-item" @click="selectCoin(coin.market)"> {{ coin.market }} </a>
+                            </li>
+                        </div>
                     </ul>
                 </div>
 
@@ -216,7 +252,23 @@
         opacity: 0;
         /* transform: translateY(10px); */
         visibility: hidden;
+        max-height: 350px;   /* 원하는 높이 */
         transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+
+    }
+
+    /* 검색창 고정 영역 */
+    .dropdown-search-box {
+        background: white;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    /* 스크롤되는 공간 */
+    .dropdown-scroll-list {
+        max-height: 250px;  /* 리스트 최대 높이 */
+        overflow-y: auto;   /* 스크롤 */
     }
 
     /* dropdown이 열릴 때 (Bootstrap에서 자동으로 .show 클래스 추가됨) */
