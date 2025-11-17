@@ -15,7 +15,7 @@ export function get_apis() {
 // async걸리면 어차피 event loop돌면서 해당 function task는 call stack에 쌓임 js상에서는 (python이랑 겉보기에 비슷하지만, 내부적으로는 좀 다름)
 export async function get_coins() {
     try { // http://localhost:9090
-        return await axios.get("https://www.taylee.link:53990/coin/data/list", {
+        return await axios.get("http://localhost:9090/coin/data/list", {
         auth: {
             username: 'user',
             password: '468715ca-cfbc-4ee7-a4c3-9f7903897c1f'
@@ -31,7 +31,7 @@ export async function get_coins() {
 
 export async function get_coins_data(marketNm) {
     try {
-        const res = await axios.get("https://www.taylee.link:53990/coin/data/json/day", {
+        const res = await axios.get("http://localhost:9090/coin/data/json/day", {
             auth: {
                 username: 'user',
                 password: '468715ca-cfbc-4ee7-a4c3-9f7903897c1f'
