@@ -29,9 +29,9 @@ export async function get_coins() {
     }
 }
 
-export async function get_coins_data(marketNm) {
+export async function get_coins_data(marketNm, unit) {
     try {
-        const res = await axios.get("http://localhost:9090/coin/data/json/day", {
+        const res = await axios.get(`http://localhost:9090/coin/data/json/${unit}`, {
             auth: {
                 username: 'user',
                 password: '468715ca-cfbc-4ee7-a4c3-9f7903897c1f'
