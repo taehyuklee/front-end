@@ -1,5 +1,5 @@
 <script setup>
-  import { reactive, ref , computed} from 'vue'
+  import { watch, onMounted, reactive, ref , computed} from 'vue'
   import { useRouter } from 'vue-router'
   import { useUiStore } from '@/stores/ui';
 
@@ -43,14 +43,35 @@
     if (currentPath === chartId) {
       // 이미 해당 경로일 경우 → 부모로 돌아감
       router.push('/coin_chart')
-      selectedChartId.value = null
+      // selectedChartId.value = null
     } else {
       // 다른 경로일 경우 → 해당 자식 뷰로 이동
       router.push(chartId)
-      selectedChartId.value = chartId
+      // selectedChartId.value = chartId
     }
   }
-  
+
+  onMounted(() => {
+    const path = router.currentRoute.value.path
+
+    // /coin_chart/candle 같은 경로면 선택된 것으로 처리
+    const match = chartList.find(c => c.id === path)
+
+    if (match) {
+      selectedChartId.value = match.id
+    } else {
+      selectedChartId.value = null
+    }
+  })
+
+  // 라우트 변경될 때마다 selectedChartId 갱신
+  watch(
+    () => router.currentRoute.value.path,
+    (newPath) => {
+      const match = chartList.find(c => c.id === newPath)
+      selectedChartId.value = match ? match.id : null
+    }
+  )
 </script>
 
 <template>
