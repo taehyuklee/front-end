@@ -164,21 +164,60 @@
             (newData) => {
                 if (!chartInstance) return
                 const data = splitData(newData)
+                const option = {
+                    xAxis: [
+                        { data: data.categoryData },
+                        { data: data.categoryData }
+                    ],
+                    series: [
+                        { data: data.values },
+                        { data: calculateMA(5, data) },
+                        { data: calculateMA(10, data) },
+                        { data: calculateMA(20, data) },
+                        { data: calculateMA(30, data) },
+                        { data: data.volumes }
+                    ],
+                    dataZoom: [
+                        { type: 'inside', xAxisIndex: [0, 1], start: 99, end: 100 },
+                        { show: true, xAxisIndex: [0, 1], type: 'slider', top: '85%', start: 99, end: 100 }
+                    ]
+                }
 
-                chartInstance.setOption({
-                xAxis: [
-                    { data: data.categoryData },
-                    { data: data.categoryData }
-                ],
-                series: [
-                    { data: data.values },
-                    { data: calculateMA(5, data) },
-                    { data: calculateMA(10, data) },
-                    { data: calculateMA(20, data) },
-                    { data: calculateMA(30, data) },
-                    { data: data.volumes }
-                ]
-                })
+                if (props.timeType === 'hour') {
+                    const total = data.categoryData.length;
+
+                    // 현재 시각 정각
+                    const nowStr = floorToHour(new Date());
+                    const startTime = new Date(new Date().getTime() - 24*60*60*1000);
+                    const startStr = floorToHour(startTime);
+
+                    const startIndex = data.categoryData.indexOf(startStr);
+                    const endIndex = data.categoryData.indexOf(nowStr);
+
+                    const safeStart = startIndex === -1 ? 0 : startIndex;
+                    const safeEnd = endIndex === -1 ? total - 1 : endIndex;
+
+                    option.dataZoom = [
+                        {
+                            type: 'inside',
+                            xAxisIndex: [0,1],
+                            startValue: safeStart,
+                            endValue: safeEnd
+                        },
+                        {
+                            show: true,
+                            type: 'slider',
+                            xAxisIndex: [0,1],
+                            top: '85%',
+                            startValue: safeStart,
+                            endValue: safeEnd
+                        }
+                    ];
+                }
+
+
+                chartInstance.setOption(option)
+
             },
             { deep: true }
         )
@@ -257,43 +296,6 @@
         })
 
         window.addEventListener('resize', resizeHandler)
-
-
-        // watch(
-        //     () => props.timeType,
-        //     (newType) => {
-        //         if (!chartInstance) return;
-
-        //         const data = splitData(props.rawData);
-        //         const total = data.categoryData.length;
-
-        //         if (newType === "hour") {
-        //             const startIndex = total - 24;
-        //             const endIndex = total - 1;
-
-        //             chartInstance.setOption({
-        //                 dataZoom: [
-        //                     {
-        //                         type: "inside",
-        //                         xAxisIndex: [0, 1],
-        //                         startValue: data.categoryData[startIndex],
-        //                         endValue: data.categoryData[endIndex]
-        //                     },
-        //                     {
-        //                         show: true,
-        //                         type: "slider",
-        //                         xAxisIndex: [0, 1],
-        //                         top: "85%",
-        //                         startValue: data.categoryData[startIndex],
-        //                         endValue: data.categoryData[endIndex]
-        //                     }
-        //                 ]
-        //             });
-        //         }
-        //     }
-        // );
-
-
 
 
         // logic보다는 UI관련한 것
