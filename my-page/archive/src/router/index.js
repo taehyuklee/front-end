@@ -81,7 +81,7 @@ const routes = [
     name: 'CoinAnalysis',
     component: () =>
       import(
-        /* webpackChunkName: "coin_dashboard", webpackPrefetch:true */ '@/views/menu/CoinDashboardDetails/CoinAnalysisView.vue'
+        /* webpackChunkName: "coin_dashboard", webpackPrefetch:true */ '@/views/menu/CoinAnalysisView.vue'
       ),
       children: [
         // {
