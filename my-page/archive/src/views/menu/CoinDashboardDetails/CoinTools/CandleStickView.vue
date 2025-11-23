@@ -146,6 +146,7 @@
                     :raw-data="rawData"
                     :coin-title="coinTitle"
                     :selected-date="selectedDates"
+                    :time-type="selectedUnit"
                 />
             </div>
             

@@ -3,6 +3,7 @@
     <div id="main" ref="chartRef" class="w-full h-[100vh]"></div>
 </template>
 
+
 <script setup>
 
     import { ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
@@ -20,7 +21,8 @@
     const props = defineProps({
         rawData: Array,
         coinTitle: String,
-        selectedDate: Array
+        selectedDate: Array,
+        timeType: { type: String, default: 'day' }
     })
 
     // 날짜, open, close, low, high, volume
@@ -28,6 +30,33 @@
     const rawData = props.rawData
     const coinTitle = ref(props.coinTitle ? props.coinTitle : '')
 
+
+    /** 
+     * Utility (Date Format)
+     */
+    function formatKST(date) {
+        const pad = (n) => (n < 10 ? "0" + n : n);
+
+        const yyyy = date.getFullYear();
+        const mm = pad(date.getMonth() + 1);
+        const dd = pad(date.getDate());
+        const hh = pad(date.getHours());
+        const mi = pad(date.getMinutes());
+
+        return `${yyyy}-${mm}-${dd} ${hh}:${mi}`;
+    }
+
+    function floorToHour(date) {
+        if (!(date instanceof Date)) return date;
+        const d = new Date(date);
+        d.setMinutes(0, 0, 0); // 분, 초, ms 제거
+        return formatKST(d);   // "YYYY-MM-DD HH:mm"
+    }
+
+
+    /**
+     * Chart Data Processor
+     */
     function splitData(rawData) {
         const categoryData = []
         const values = []
@@ -56,6 +85,10 @@
         return result
     }
 
+
+    /**
+     * Life Cycle
+     */
     onMounted(() => {
         const data = splitData(rawData)
         chartInstance = echarts.init(chartRef.value)
@@ -113,8 +146,8 @@
             ],
             yAxis: [{ scale: true }, { scale: true, gridIndex: 1 }],
             dataZoom: [
-                { type: 'inside', xAxisIndex: [0, 1], start: 70, end: 100 },
-                { show: true, xAxisIndex: [0, 1], type: 'slider', top: '85%', start: 70, end: 100 }
+                { type: 'inside', xAxisIndex: [0, 1], start: 99, end: 100 },
+                { show: true, xAxisIndex: [0, 1], type: 'slider', top: '85%', start: 99, end: 100 }
             ],
             series: [
                 { name: coinTitle.value, type: 'candlestick', data: data.values },
@@ -176,27 +209,35 @@
             (newDate) => {
                 if (!chartInstance || !newDate?.length) return;
 
+                let start, end;
+
                 // Date → "YYYY-MM-DD" 형식으로 변환
-                const start = newDate[0] instanceof Date ? newDate[0].toISOString().slice(0,10) : newDate[0];
-                const end = newDate[1] instanceof Date ? newDate[1].toISOString().slice(0,10) : newDate[1];
+                if(props.timeType === 'hour'){
+                    start = floorToHour(newDate[0]);  // 정각으로 조정
+                    end   = floorToHour(newDate[1]);
+
+                } else{
+                    start = newDate[0] instanceof Date ? formatKST(newDate[0]).slice(0, 10) : newDate[0];
+                    end   = newDate[1] instanceof Date ? formatKST(newDate[1]).slice(0, 10) : newDate[1];
+                }
 
                 chartInstance.setOption({
-                dataZoom: [
-                    {
-                        type: 'inside',
-                        xAxisIndex: [0, 1],
-                        startValue: start,
-                        endValue: end
-                    },
-                    {
-                        show: true,
-                        xAxisIndex: [0, 1],
-                        type: 'slider',
-                        top: '85%',
-                        startValue: start,
-                        endValue: end
-                    }
-                ]
+                    dataZoom: [
+                        {
+                            type: 'inside',
+                            xAxisIndex: [0, 1],
+                            startValue: start,
+                            endValue: end
+                        },
+                        {
+                            show: true,
+                            xAxisIndex: [0, 1],
+                            type: 'slider',
+                            top: '85%',
+                            startValue: start,
+                            endValue: end
+                        }
+                    ]
                 });
             }
         )
@@ -217,18 +258,42 @@
 
         window.addEventListener('resize', resizeHandler)
 
-        
-        // 사이드바 상태(true/false) 감지
+
         // watch(
-        // () => props.isSidebarClosed,
-        // async () => {
-        //     await nextTick()
-        //     // transition 끝난 뒤에 리사이즈
-        //     setTimeout(() => {
-        //     chartInstance?.resize()
-        //     }, 250) // CSS transition 시간에 맞춰 조정
-        // }
-        // )
+        //     () => props.timeType,
+        //     (newType) => {
+        //         if (!chartInstance) return;
+
+        //         const data = splitData(props.rawData);
+        //         const total = data.categoryData.length;
+
+        //         if (newType === "hour") {
+        //             const startIndex = total - 24;
+        //             const endIndex = total - 1;
+
+        //             chartInstance.setOption({
+        //                 dataZoom: [
+        //                     {
+        //                         type: "inside",
+        //                         xAxisIndex: [0, 1],
+        //                         startValue: data.categoryData[startIndex],
+        //                         endValue: data.categoryData[endIndex]
+        //                     },
+        //                     {
+        //                         show: true,
+        //                         type: "slider",
+        //                         xAxisIndex: [0, 1],
+        //                         top: "85%",
+        //                         startValue: data.categoryData[startIndex],
+        //                         endValue: data.categoryData[endIndex]
+        //                     }
+        //                 ]
+        //             });
+        //         }
+        //     }
+        // );
+
+
 
 
         // logic보다는 UI관련한 것
