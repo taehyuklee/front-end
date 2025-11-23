@@ -1,7 +1,13 @@
 import axios from "axios";
 
+const API_USER = import.meta.env.VITE_API_USER;
+const API_PASSWORD = import.meta.env.VITE_API_PASSWORD;
+const API_BASE = import.meta.env.VITE_API_BASE;
+const LOCAL_BASE = import.meta.env.VITE_LOCAL_BASE;
+
+
 export function get_apis() {
-    return axios.get("http://localhost:9090/coin/data/list", {
+    return axios.get(`${API_BASE}/coin/data/list`, {
         auth: {
             username: 'user',
             password: '1123123wae!!'
@@ -15,7 +21,7 @@ export function get_apis() {
 // async걸리면 어차피 event loop돌면서 해당 function task는 call stack에 쌓임 js상에서는 (python이랑 겉보기에 비슷하지만, 내부적으로는 좀 다름)
 export async function get_coins() {
     try { // http://localhost:9090
-        return await axios.get("http://localhost:9090/coin/data/list", {
+        return await axios.get(`${API_BASE}/coin/data/list`, {
         auth: {
             username: 'user',
             password: '468715ca-cfbc-4ee7-a4c3-9f7903897c1f'
@@ -31,7 +37,7 @@ export async function get_coins() {
 
 export async function get_coins_data(marketNm, unit) {
     try {
-        const res = await axios.get(`http://localhost:9090/coin/data/json/${unit}`, {
+        const res = await axios.get(`${API_BASE}/coin/data/json/${unit}`, {
             auth: {
                 username: 'user',
                 password: '468715ca-cfbc-4ee7-a4c3-9f7903897c1f'
