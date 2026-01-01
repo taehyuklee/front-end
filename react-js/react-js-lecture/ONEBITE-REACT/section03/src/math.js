@@ -27,6 +27,6 @@ export function subExp(a, b) {
 }
 
 // 아래와 같이 default로 export할수도 있다.
-export default function multiply() {
+export default function multiply(a, b) {
   return a * b;
 }

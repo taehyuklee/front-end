@@ -27,7 +27,13 @@ console.log(subExp(1, 2));
 
 // default export는 중괄호가 없다. (이름은 내 맘대로)
 import mul from "./math.js";
-console.log(multiply(2, 3));
+console.log(mul(2, 3));
 
 //합쳐서 import도 가능
-import mul, { add, sub, addExp, subExp } from "./math.js";
+// import mul, { add, sub, addExp, subExp } from "./math.js";
+
+// nodemodules의 Library에서 가져오는건 아래와 가이 경로를 따로 쓸 필요가 없다.
+import randomColor from "randomcolor";
+
+const color = randomColor();
+console.log(color);
